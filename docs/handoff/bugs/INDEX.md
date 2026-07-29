@@ -11,3 +11,4 @@ Generated from frontmatter. Regenerate with `python3 docs/handoff/bugs/_regen_in
 | 005 | 2026-07-22 | apseudo-lint.yml validates the deleted .codex/hooks.json, failing CI since 2026-07-09 | ci | fixed |
 | 006 | 2026-07-22 | apseudo-explain --json and apseudo-template --json crash on slots dataclasses | cli | fixed |
 | 007 | 2026-07-24 | Explainer AAC-LD audio plays as static in ordinary media players | video | fixed |
+| 008 | 2026-07-29 | Production-entry test assumes real scene composition remains blocked | video, tests | open |

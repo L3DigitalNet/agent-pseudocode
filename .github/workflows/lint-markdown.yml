@@ -9,7 +9,15 @@ on:
 
 jobs:
   lint-markdown:
+    permissions:
+      contents: read
     uses: L3DigitalNet/project-standards/.github/workflows/lint-markdown.yml@v5
     with:
       markdownlint: true
-      globs: "**/*.md\n!docs/reference/pre-migration/**"
+      globs: |-
+        **/*.md
+        !.pytest_cache/**
+        !.ruff_cache/**
+        !.venv/**
+        !node_modules/**
+        !docs/reference/pre-migration/**
