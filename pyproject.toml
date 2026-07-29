@@ -121,22 +121,19 @@ target-version = "py314"
 line-length = 100
 src = ["src", "tests", "media/repository-explainer"]
 extend-exclude = [".claude", ".agents", ".codex", ".continue"]
-
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM", "C4", "PIE", "PTH", "RET", "RUF"]
 ignore = ["E501"]
-
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["S101"]
-
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 docstring-code-format = true
 
 [tool.basedpyright]
-include = ["src", "tests", "media/repository-explainer/video_pipeline"]
-extraPaths = ["media/repository-explainer"]
+include = ["src", "tests", "media/repository-explainer"]
+extraPaths = ["src", "media/repository-explainer"]
 typeCheckingMode = "strict"
 pythonVersion = "3.14"
 pythonPlatform = "All"

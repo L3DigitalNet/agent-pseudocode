@@ -9,8 +9,15 @@ on:
 
 jobs:
   format:
+    permissions:
+      contents: read
     uses: L3DigitalNet/project-standards/.github/workflows/format.yml@v5
     with:
       prettier: true
       globs: "**/*.md\n**/*.json\n**/*.jsonc\n**/*.yml\n**/*.yaml"
-      exclusions: "docs/reference/pre-migration/**\npackage-lock.json"
+      exclusions: |-
+        docs/reference/pre-migration/**
+        package-lock.json
+        products/vscode-extension/**/*.code-snippets
+        products/vscode-extension/**/*.js
+        products/vscode-extension/**/*.mjs

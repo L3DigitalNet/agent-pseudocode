@@ -3,11 +3,10 @@ spec_id: SPEC-NSBJ
 title: 'Repository Explainer Video'
 status: approved # draft | review | approved | superseded
 profile: standard # this is the Standard template; see Appendix D
-doc_type: 'spec'
 owner: 'Chris Purcell'
 implementer: 'Codex, supervised by the owner'
 created: '2026-07-23'
-last_reviewed: '2026-07-24'
+last_reviewed: '2026-07-29'
 supersedes: null # SPEC id this replaces, if any
 superseded_by: null # filled in when this spec is retired
 related:
@@ -27,6 +26,7 @@ related:
 
 | Version | Date | Author | Change |
 | --- | --- | --- | --- |
+| 0.6 | `2026-07-29` | Codex, owner-authorized | Removed a noncanonical frontmatter key for Project Specification 1.5 conformance; requirements and approved scope are unchanged. |
 | 0.5 | `2026-07-24` | Chris Purcell, Codex | Recalibrated the release as a quick repository demo and deferred release-grade media assurance. |
 | 0.4 | `2026-07-23` | Codex, owner-authorized | Clarified provider permission granularity, fixed-frame narration fit, and production-code gate scope during requested Opus convergence. |
 | 0.3 | `2026-07-23` | Codex | Resolved adversarial-review findings for reproducibility, per-variant delivery, provider fallback, provenance, and repository gates. |

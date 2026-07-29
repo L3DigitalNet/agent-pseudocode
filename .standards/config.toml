@@ -31,6 +31,9 @@ config.ci = { lint_caller = true, format_caller = true }
 config.exclusions = [
   { glob = "docs/reference/pre-migration/**", applies_to = "both", reason = "Verbatim archived ChatGPT transcript; reformatting or annotating it would destroy the historical record. Already exempt from APSEUDO fence linting per bug 003." },
   { glob = "package-lock.json", applies_to = "format", reason = "npm regenerates this file and reverts Prettier's formatting on every install." },
+  { glob = "products/vscode-extension/**/*.js", applies_to = "format", reason = "VS Code extension JavaScript follows its product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope." },
+  { glob = "products/vscode-extension/**/*.mjs", applies_to = "format", reason = "VS Code extension build scripts follow their product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope." },
+  { glob = "products/vscode-extension/**/*.code-snippets", applies_to = "format", reason = "VS Code snippet files preserve their product-local JSON formatting and are outside the declared structured-config extensions." },
 ]
 
 [standards.project-spec]
@@ -47,6 +50,7 @@ contract_version = "1.1"
 python_version = "3.14"
 build_backend = "uv_build"
 source_layout = "src"
+additional_source_roots = [{ path = "media/repository-explainer", coverage = false }]
 additional_dev_dependencies = []
 workflow_ownership = "managed"
 script_ownership = "managed"

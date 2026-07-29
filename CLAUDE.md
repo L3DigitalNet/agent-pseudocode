@@ -70,10 +70,14 @@ Prettier owns physical formatting and markdownlint owns Markdown structure. Do n
 Enabled checks: format, lint.
 Markdown scope: `**/*.md`.
 Structured-config scope: `**/*.json`, `**/*.jsonc`, `**/*.yml`, `**/*.yaml`.
+Lint additionally skips generated directories: `.pytest_cache/**`, `.ruff_cache/**`, `.venv/**`, `node_modules/**`.
 
 Declared exclusions:
 - `docs/reference/pre-migration/**` (both): Verbatim archived ChatGPT transcript; reformatting or annotating it would destroy the historical record. Already exempt from APSEUDO fence linting per bug 003.
 - `package-lock.json` (format): npm regenerates this file and reverts Prettier's formatting on every install.
+- `products/vscode-extension/**/*.js` (format): VS Code extension JavaScript follows its product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope.
+- `products/vscode-extension/**/*.mjs` (format): VS Code extension build scripts follow their product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope.
+- `products/vscode-extension/**/*.code-snippets` (format): VS Code snippet files preserve their product-local JSON formatting and are outside the declared structured-config extensions.
 
 Run the enabled checks before claiming completion.
 <!-- markdownlint-enable MD025 -->
