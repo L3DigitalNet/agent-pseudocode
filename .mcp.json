@@ -4,6 +4,7 @@
 			"type": "stdio",
 			"command": "bash",
 			"args": ["-lc", "cd \"${CLAUDE_PROJECT_DIR:-$(pwd)}\" && exec ./mcp/apseudo-mcp"]
-		}
+		},
+		"project-standards": { "command": "project-standards", "args": ["mcp"] }
 	}
 }

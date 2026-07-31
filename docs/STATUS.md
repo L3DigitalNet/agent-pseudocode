@@ -3,9 +3,9 @@
 ## Current snapshot
 
 - The Pythonic Agent Pseudocode toolkit includes syntax, formatter, validator, LSP, MCP, hooks, skills, CI, and documentation.
-- Project Standards 5.11.0 enables all seven evidence-backed consumer packages.
-- Resolved versions are adr 1.3, agent-handoff 1.6, cli-documentation 1.5, markdown-frontmatter 1.6, markdown-tooling 1.10, project-spec 1.5, and python-tooling 1.10.
-- The V4 to V5 migration applied on release 5.4.0 and updated in place to 5.11.0; `.standards/` is the sole authority and `.project-standards.yml` is retired.
+- Project Standards 5.13.0 enables all seven evidence-backed consumer packages.
+- Resolved versions are adr 1.3, agent-handoff 1.7, cli-documentation 1.5, markdown-frontmatter 1.7, markdown-tooling 1.11, project-spec 1.5, and python-tooling 1.10.
+- The V4 to V5 migration applied on release 5.4.0 and updated in place to 5.13.0; `.standards/` is the sole authority and `.project-standards.yml` is retired.
 - Durable Markdown frontmatter follows accepted ADR-0003; `docs/specs/` holds project-spec-conformant specifications.
 - `SPEC-QZXW` specifies the validation toolchain and is the traceability source for coverage and defect work.
 - `docs/usage.md` is the authored CLI reference for `apseudo` and its per-command entry points.
