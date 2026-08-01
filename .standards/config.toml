@@ -50,7 +50,7 @@ contract_version = "1.1"
 python_version = "3.14"
 build_backend = "uv_build"
 source_layout = "src"
-additional_source_roots = [{ path = "media/repository-explainer", coverage = false }]
+additional_source_roots = []
 additional_dev_dependencies = []
 workflow_ownership = "managed"
 script_ownership = "managed"

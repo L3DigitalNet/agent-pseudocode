@@ -3,7 +3,7 @@ schema_version = "1.1"
 catalog = "5"
 release = "5.13.0"
 catalog_digest = "sha256:7c543f966b65fc15fdb4f00644daca3dd6bb9e57a3c89fa87bcd2e484e808925"
-config_digest = "sha256:4def54bc6f17e09fa72693d54294acefd39ce14e508e37b1b682a164460b3286"
+config_digest = "sha256:b648acfa36d058932077142d2f9d678d392c6488340c5021ba317f3f180f101a"
 
 [standards.adr]
 requested = "latest"
@@ -52,7 +52,7 @@ requested = "latest"
 resolved = "1.10"
 selection = "stable"
 payload_digest = "sha256:1f397497be8e925d79f46003d7297813a7d02ea7ff0112cf523354e0a4300398"
-effective_config_digest = "sha256:3f3cb6d7e0be650cf45c2df4d0273090864cc9555a66f3787e952ebd310ad295"
+effective_config_digest = "sha256:51d764c66f57da23d1fc93dd161ef834c9f34e4b89cc4c96cb7476e95380fa4e"
 
 [[artifacts]]
 path = ".agents/hooks/agent-handoff/session_start.py"
@@ -1167,8 +1167,8 @@ owners = ["python-tooling"]
 versions = { python-tooling = "1.10" }
 provenance = "provider"
 policy = "managed"
-semantic_digest = "sha256:b9b8b3ddeb1d50a6c6c294d8cb900ddc63221c80e69dce7af83d5cbea019c40c"
-content_digest = "sha256:ab65308339bfd56cf2e97873378e1e51e9dcdc0d762ac1c16bc940f1d70e02c4"
+semantic_digest = "sha256:87640c19e0e551ec9d755a833b649b1f2753b049d9848f5e86c3b900aad15f0f"
+content_digest = "sha256:0d158e2d44c7bdfd6fbcf113b074b98a23450e5f010dce0de2217bd279de3d9e"
 created_container = false
 
 [[artifacts]]
@@ -1299,8 +1299,8 @@ owners = ["python-tooling"]
 versions = { python-tooling = "1.10" }
 provenance = "provider"
 policy = "managed"
-semantic_digest = "sha256:2d37d90b97f3c48fba186dc24e91972988f244d29527384726f8b8cd9364b358"
-content_digest = "sha256:3b9a2a72b166595cc5464743b00676c4ddc599f66880750aab347c834aa9b843"
+semantic_digest = "sha256:b7a0cf6bacec833529e467c6eed2bfab52fa5a81dc14efe8eb3920098f65be9d"
+content_digest = "sha256:13023337739dbddc7e81f949e662357ed66f8d464e33d2caa7a280a1a79032ba"
 created_container = false
 
 [[artifacts]]

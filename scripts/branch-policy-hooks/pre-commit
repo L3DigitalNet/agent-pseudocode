@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# branch-policy-managed-hook: v1
+#
+# This file is copied into the repository's common hooks directory by
+# install-branch-policy-hooks.sh. The common directory is shared by linked
+# worktrees, so one installed guard covers every worktree for this repository.
+
+set -euo pipefail
+
+hook_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
+predecessor="$hook_dir/pre-commit.branch-policy-original"
+
+# A predecessor is run first so adopting the branch safeguard cannot silently
+# disable a repository's existing commit validation.
+if [[ -x "$predecessor" ]]; then
+    "$predecessor" "$@"
+fi
+
+if [[ "${ALLOW_MAIN_COMMIT:-}" == "1" ]]; then
+    exit 0
+fi
+
+branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)
+if [[ "$branch" == "main" ]]; then
+    echo "[branch-policy pre-commit] direct commits on main are blocked." >&2
+    echo "[branch-policy pre-commit] Fix: git switch dev" >&2
+    echo "[branch-policy pre-commit] Emergency override: ALLOW_MAIN_COMMIT=1 git commit ..." >&2
+    exit 1
+fi

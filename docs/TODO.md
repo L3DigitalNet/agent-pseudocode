@@ -44,12 +44,11 @@ Instructions for AI agents:
 
   Prioritize the untested CLI, output, discovery, Mermaid, LSP, and MCP paths, and fill the `Not Started` rows in §17.3 of `docs/specs/apseudo-validation-toolchain.md` as the tests land.
 
-- [ ] Fix the four remaining bugs in `docs/handoff/bugs/`.
+- [ ] Fix the three remaining bugs in `docs/handoff/bugs/`.
 
   - [bug 001](handoff/bugs/001-mcp-resource-map-stale-paths.md): stale MCP resource paths.
   - [bug 002](handoff/bugs/002-review-completeness-stale-paths.md): stale completeness-check paths.
   - [bug 004](handoff/bugs/004-lsp-serve-unhandled-read-message.md): unguarded LSP message reads.
-  - [bug 008](handoff/bugs/008-production-state-test-stale-assumption.md): production-entry test depends on real scene composition remaining blocked.
 
   Add one pinning regression test per fix, per §17.2 of the toolchain spec.
 

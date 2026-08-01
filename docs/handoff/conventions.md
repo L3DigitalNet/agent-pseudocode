@@ -1,6 +1,6 @@
 # Conventions
 
-**Last updated:** 2026-07-09
+**Last updated:** 2026-08-01
 
 ## Quick Reference
 
@@ -11,6 +11,7 @@
 | C-003 | Adding a CLI entry point | Add it to `[project.scripts]` in `pyproject.toml` and document it per the `cli-documentation` standard (`docs/apseudo-docs/usage/usage.md`). |
 | C-004 | Editing `.project-standards.yml`'s `markdown.frontmatter` block | Keep enforcement on the ADR-0003 durable-doc corpus and preserve its exclusions for temporary, operational, harness-owned, and fixture files. |
 | C-005 | Installing/syncing Python deps | Use bare `uv sync` (or `uv sync --all-groups`), never `uv sync --extra dev` — `dev` is a `[dependency-groups]` entry, not an extra, since the python-tooling adoption. |
+| C-006 | Developing or promoting repository changes | Commit and push ordinary work on `dev`; advance `main` only by approved `git merge --ff-only dev` and its branch safeguards. |
 
 ## C-001: Rule catalog is generated, not authored
 
@@ -53,3 +54,11 @@
 **Rule:** Use `uv sync` (or `uv sync --all-groups`). `uv sync --extra dev` no longer works.
 
 **Why:** the `python-tooling` adoption (2026-07-09, ADR-0002) moved `dev` from `[project.optional-dependencies]` (an "extra") to `[dependency-groups]`, which syncs by default with bare `uv sync`.
+
+## C-006: `dev` is the integration branch; `main` is the approved promotion branch
+
+**Applies when:** creating ordinary commits, pushing development work, or promoting reviewed work to `main`.
+
+**Rule:** Work normally on `dev`. Do not commit directly to `main`. After tests, review, and explicit owner approval, run `git switch main`, `git merge --ff-only dev`, `git push origin main`, then `git switch dev`.
+
+**Why:** ADR-0004 makes the integration relationship durable while keeping review and approval independent of the local mechanical safeguards. `scripts/install-branch-policy-hooks.sh` installs the safeguards and preserves predecessor hooks.

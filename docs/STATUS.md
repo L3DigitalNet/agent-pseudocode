@@ -9,9 +9,9 @@
 - Durable Markdown frontmatter follows accepted ADR-0003; `docs/specs/` holds project-spec-conformant specifications.
 - `SPEC-QZXW` specifies the validation toolchain and is the traceability source for coverage and defect work.
 - `docs/usage.md` is the authored CLI reference for `apseudo` and its per-command entry points.
-- The 135-second repository explainer is locally verified under ignored `dist/video/final/` with AAC-LC narrated and speaker MP4s, selected `marin` WAV, captions, manifests, report, and checksums; publication remains separate.
+- `dev` is the permanent integration branch; ADR-0004 and local safeguards require an approved fast-forward promotion before `main` advances.
 - Markdown lint and Prettier gates are green; the archived pre-migration transcript is a declared, reasoned exclusion.
-- The `check.yml` gate remains red at 62% coverage against the 85% floor; one stale production-entry assertion also fails because completed scene inputs now advance verification to the inventory gate (bug 008).
-- Four product bugs remain open in `docs/handoff/bugs/`; bugs 003, 005, 006, and 007 are fixed.
+- The `check.yml` gate remains red at 62% coverage against the 85% floor.
+- Three product bugs remain open in `docs/handoff/bugs/`; bugs 003, 005, and 006 are fixed.
 - Agent Handoff 1.6 provides the shared repo-local runtime and canonical `docs/` state. Its managed Codex command currently fails under `uv-strict-python` shims; upstream project-standards issue 80 tracks the integration defect.
 - `cli-docs-check.yml` stays consumer-owned to keep its SHA-pinned action hardening.

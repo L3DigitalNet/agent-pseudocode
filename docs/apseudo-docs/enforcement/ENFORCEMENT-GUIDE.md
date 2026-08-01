@@ -6,7 +6,7 @@ description: 'Guide to enforcing Pythonic Agent Pseudocode across local, CI, and
 doc_type: 'runbook'
 status: 'active'
 created: '2026-07-08'
-updated: '2026-07-09'
+updated: '2026-08-01'
 reviewed: null
 owner: 'tooling-maintainers'
 consumer: 'mix'
@@ -79,6 +79,8 @@ The design rule is simple: **all policy logic lives in `src/apseudo_lint`; integ
 | `CLAUDE.md` | Claude-specific instructions. |
 | `scripts/install-enforcement.sh` | Local install helper. |
 | `scripts/run-enforcement-smoke-test.sh` | Local end-to-end smoke test. |
+| `scripts/install-branch-policy-hooks.sh` | Collision-safe installer for the local `main` branch safeguards. |
+| `scripts/branch-policy-hooks/` | Version-controlled sources for the installed `pre-commit` and `pre-push` safeguards. |
 
 ## Local setup
 
@@ -123,6 +125,46 @@ The hook applies to:
 *.agentpseudo
 *.md
 *.markdown
+```
+
+## Branch integration and local Git hook safeguards
+
+`dev` is the permanent integration branch. Do ordinary development commits and pushes there. `main` advances only after work is complete, tested, reviewed, and explicitly approved by the repository owner.
+
+Install the branch safeguards from the repository root:
+
+```bash
+scripts/install-branch-policy-hooks.sh
+```
+
+The installer writes only the common Git hook directory. It preserves an existing executable `pre-commit` or `pre-push` hook as `<hook>.branch-policy-original`, calls that predecessor first, and refuses an ambiguous hook-plus-backup state. It is idempotent for the managed hooks it recognizes. Linked worktrees share that common hook directory.
+
+Before installation, inspect the active hook configuration:
+
+```bash
+git config --show-origin --get core.hooksPath
+git rev-parse --git-common-dir
+```
+
+When `core.hooksPath` points to a user-global path, its dispatcher must run any predecessor first and then execute `<common-git-dir>/hooks/<hook>`. It must use `git rev-parse --git-common-dir`, not `--git-dir` or `git rev-parse --git-path hooks/<hook>`, so linked worktrees reach the shared default hook. Do not overwrite an unrecognized global hook or make a user-global change without specific approval.
+
+The installed `pre-commit` rejects a direct `main` commit. `ALLOW_MAIN_COMMIT=1` is the sole emergency override. The installed `pre-push` rejects an update of `main` unless local `main` and `dev` identify the same commit; it also rejects deletion and non-fast-forward updates. `ALLOW_MAIN_PUSH=1` is its sole emergency override. The overrides are exceptional and do not replace review or owner approval.
+
+After review and approval, promote with:
+
+```bash
+git switch main
+git merge --ff-only dev
+git push origin main
+git switch dev
+```
+
+Git client hooks can be bypassed with `--no-verify`. They prevent mistakes; they are not a security boundary and do not establish hosted branch protection.
+
+The isolated regression suite is:
+
+```bash
+uv run pytest tests/test_branch_policy_hooks.py
 ```
 
 ## GitHub Actions CI
