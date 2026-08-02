@@ -52,10 +52,6 @@ Instructions for AI agents:
 
   Add one pinning regression test per fix, per §17.2 of the toolchain spec.
 
-- [ ] Refresh Agent Handoff after upstream project-standards issue 80 is fixed.
-
-  Agent Handoff 1.6 validates and is drift-free, but its managed Codex SessionStart command resolves the `uv-strict-python` rejecting `python3` shim and exits 1. Keep managed files unchanged and update through a released Project Standards successor.
-
 - [ ] Add the single-policy-source test (NFR-004 / MS-1 in the toolchain spec).
 
   Assert no rule code or severity is defined outside `src/apseudo_lint/rules.py`. This is the architecture rule the whole design rests on and the only one with no mechanical enforcement.
