@@ -11,9 +11,9 @@ on:
       - "src/apseudo_lint/**"
       - "tests/**"
       - "scripts/**"
-      - "products/vscode-extension/**"
-      - "products/kate-integration/**"
-      - "integrations/agent-hooks/**"
+      - "editors/vscode/**"
+      - "editors/kate/**"
+      - "integrations/agents/**"
       - ".agents/**"
       - ".claude/**"
       - ".codex/**"
@@ -31,9 +31,9 @@ on:
       - "src/apseudo_lint/**"
       - "tests/**"
       - "scripts/**"
-      - "products/vscode-extension/**"
-      - "products/kate-integration/**"
-      - "integrations/agent-hooks/**"
+      - "editors/vscode/**"
+      - "editors/kate/**"
+      - "integrations/agents/**"
       - ".agents/**"
       - ".claude/**"
       - ".codex/**"
@@ -87,7 +87,7 @@ jobs:
           uv run apseudo-mcp --version
           uv run apseudo-explain APSEUDO-WHILE-001 >/dev/null
           uv run apseudo-template bounded-review-loop >/dev/null
-          uv run apseudo-mermaid docs/reference/language/examples/review-loop.apseudo --no-fence >/dev/null
+          uv run apseudo-mermaid examples/standalone/review-loop.apseudo --no-fence >/dev/null
 
       - name: Validate JSON/TOML configs
         run: |
@@ -100,7 +100,7 @@ jobs:
           PY
 
       - name: Lint Python implementation
-        run: uv run ruff check src tests integrations/agent-hooks
+        run: uv run ruff check src tests integrations/agents
 
       - name: Run basedpyright strict type check
         run: uv run basedpyright

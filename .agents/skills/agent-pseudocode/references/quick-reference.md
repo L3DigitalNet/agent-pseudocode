@@ -38,6 +38,6 @@ process workflow_name(input, max_rounds=5) -> Outcome:
 
 ## Diagnostic triage
 
-- Use `scripts/apseudo-explain <CODE>` for rule intent and examples.
-- Use `scripts/apseudo-format --check --changed` before linter runs.
-- Use `scripts/apseudo-review .` for project completeness.
+- Use `scripts/bin/apseudo-explain <CODE>` for rule intent and examples.
+- Use `scripts/bin/apseudo-format --check --changed` before linter runs.
+- Use `scripts/bin/apseudo-review .` for project completeness.

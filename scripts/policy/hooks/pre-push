@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# branch-policy-managed-hook: v1
+#
+# This file is copied into the repository's common hooks directory by
+# scripts/policy/install-hooks.sh. The common directory is shared by linked
+# worktrees, so one installed guard covers every worktree for this repository.
+
+set -euo pipefail
+
+hook_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
+predecessor="$hook_dir/pre-push.branch-policy-original"
+updates=$(mktemp "${TMPDIR:-/tmp}/branch-policy-pre-push.XXXXXX")
+trap 'rm -f "$updates"' EXIT
+cat >"$updates"
+
+# pre-push updates arrive on stdin. Replay them for the predecessor and this
+# guard so preserving existing behavior does not consume the policy's input.
+if [[ -x "$predecessor" ]]; then
+    "$predecessor" "$@" <"$updates"
+fi
+
+if [[ "${ALLOW_MAIN_PUSH:-}" == "1" ]]; then
+    exit 0
+fi
+
+reject() {
+    echo "[branch-policy pre-push] $1" >&2
+    echo "[branch-policy pre-push] Fix: $2" >&2
+    echo "[branch-policy pre-push] Emergency override: ALLOW_MAIN_PUSH=1 git push ..." >&2
+    exit 1
+}
+
+while IFS=' ' read -r local_ref local_oid remote_ref remote_oid; do
+    [[ "$remote_ref" == "refs/heads/main" ]] || continue
+
+    if [[ "$local_oid" =~ ^0+$ ]]; then
+        reject "deleting main is blocked." "Push a reviewed fast-forward promotion instead."
+    fi
+
+    main_oid=$(git rev-parse --verify refs/heads/main 2>/dev/null) || \
+        reject "local main is missing." "Create main from the authoritative remote before pushing."
+    dev_oid=$(git rev-parse --verify refs/heads/dev 2>/dev/null) || \
+        reject "local dev is missing." "Create dev from main before ordinary development."
+    if [[ "$main_oid" != "$dev_oid" ]]; then
+        reject "local main and dev must identify the same commit before updating main." \
+            "git switch main && git merge --ff-only dev"
+    fi
+
+    if [[ ! "$remote_oid" =~ ^0+$ ]] && ! git merge-base --is-ancestor "$remote_oid" "$local_oid"; then
+        reject "non-fast-forward updates to main are blocked." \
+            "Fetch origin and promote the reviewed dev commit with a fast-forward merge."
+    fi
+done <"$updates"

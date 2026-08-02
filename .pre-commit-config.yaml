@@ -9,7 +9,7 @@ repos:
       - id: apseudo-format
         name: Agent Pseudocode Formatter
         description: Check .apseudo files and apseudo fenced blocks in Markdown.
-        entry: scripts/apseudo-format
+        entry: scripts/bin/apseudo-format
         language: system
         stages: [pre-commit, pre-push, manual]
         files: '\.(apseudo|agentpseudo|pseudocode|md|markdown)$'
@@ -17,7 +17,7 @@ repos:
       - id: apseudo-lint
         name: Agent Pseudocode Validator
         description: Validate .apseudo files and apseudo fenced blocks in Markdown.
-        entry: scripts/apseudo-lint
+        entry: scripts/bin/apseudo-lint
         language: system
         stages: [pre-commit, pre-push, manual]
         files: '\.(apseudo|agentpseudo|pseudocode|md|markdown)$'
@@ -25,7 +25,7 @@ repos:
       - id: apseudo-review
         name: Agent Pseudocode Project Review
         description: Review project-level pseudocode/tooling completeness before push.
-        entry: scripts/apseudo-review .
+        entry: scripts/bin/apseudo-review .
         language: system
         stages: [pre-push, manual]
         pass_filenames: false

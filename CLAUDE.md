@@ -14,8 +14,8 @@ Hard requirements:
 
 - Follow `docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md`.
 - `apseudo-lint`/`apseudo-format` are the source of truth for compliance/formatting.
-- Run `scripts/apseudo-format --check --changed` and `scripts/apseudo-lint --changed` before completion.
-- Use `scripts/apseudo-explain <RULE>` for unclear diagnostics.
+- Run `scripts/bin/apseudo-format --check --changed` and `scripts/bin/apseudo-lint --changed` before completion.
+- Use `scripts/bin/apseudo-explain <RULE>` for unclear diagnostics.
 - Do not claim completion with APSEUDO-\* errors remaining.
 - No `--no-verify`, `SKIP=...`, disabled hooks, or other enforcement bypasses.
 
@@ -27,7 +27,7 @@ uv run pytest
 uv run apseudo-format --check .
 uv run apseudo-lint .
 uv run apseudo-review .
-uv run ruff check src tests integrations/agent-hooks
+uv run ruff check src tests integrations/agents
 uv run basedpyright
 ```
 
@@ -75,9 +75,10 @@ Lint additionally skips generated directories: `.pytest_cache/**`, `.ruff_cache/
 Declared exclusions:
 - `docs/reference/pre-migration/**` (both): Verbatim archived ChatGPT transcript; reformatting or annotating it would destroy the historical record. Already exempt from APSEUDO fence linting per bug 003.
 - `package-lock.json` (format): npm regenerates this file and reverts Prettier's formatting on every install.
-- `products/vscode-extension/**/*.js` (format): VS Code extension JavaScript follows its product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope.
-- `products/vscode-extension/**/*.mjs` (format): VS Code extension build scripts follow their product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope.
-- `products/vscode-extension/**/*.code-snippets` (format): VS Code snippet files preserve their product-local JSON formatting and are outside the declared structured-config extensions.
+- `editors/vscode/**/*.js` (format): VS Code extension JavaScript follows its product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope.
+- `editors/vscode/**/*.mjs` (format): VS Code extension build scripts follow their product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope.
+- `editors/vscode/**/*.code-snippets` (format): VS Code snippet files preserve their product-local JSON formatting and are outside the declared structured-config extensions.
+- `editors/vscode/syntaxes/*.tmLanguage.json` (format): VS Code grammar JSON is generated from YAML by the product-local compiler; root Prettier would create drift after every rebuild.
 
 Run the enabled checks before claiming completion.
 <!-- markdownlint-enable MD025 -->

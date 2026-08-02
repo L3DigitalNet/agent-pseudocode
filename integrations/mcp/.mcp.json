@@ -7,7 +7,6 @@
 				"-lc",
 				"cd \"${CLAUDE_PROJECT_DIR:-$(pwd)}\" && exec ./integrations/mcp/apseudo-mcp"
 			]
-		},
-		"project-standards": { "command": "project-standards", "args": ["mcp"] }
+		}
 	}
 }

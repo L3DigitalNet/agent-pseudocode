@@ -95,8 +95,8 @@ def review_project(root: Path, config: LintConfig | None = None) -> ProjectRevie
             actual_root, "Language convention", "docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md"
         ),
         _check_file(actual_root, "Token specification", "docs/reference/language/TOKEN-SPEC.md"),
-        _check_file(actual_root, "VS Code extension", "products/vscode-extension/package.json"),
-        _check_file(actual_root, "Kate syntax", "products/kate-integration/agent-pseudocode.xml"),
+        _check_file(actual_root, "VS Code extension", "editors/vscode/package.json"),
+        _check_file(actual_root, "Kate syntax", "editors/kate/agent-pseudocode.xml"),
         _check_file(actual_root, "Formatter", "src/apseudo_lint/formatting.py"),
         _check_file(actual_root, "Validator", "src/apseudo_lint/lint.py"),
         _check_file(actual_root, "Language server", "src/apseudo_lint/lsp.py"),

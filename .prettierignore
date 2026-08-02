@@ -10,9 +10,10 @@ docs/TODO.md
 # run matches the format CI caller. Keep the two in sync.
 docs/reference/pre-migration/
 package-lock.json
-products/vscode-extension/**/*.js
-products/vscode-extension/**/*.mjs
-products/vscode-extension/**/*.code-snippets
+editors/vscode/**/*.js
+editors/vscode/**/*.mjs
+editors/vscode/**/*.code-snippets
+editors/vscode/syntaxes/*.tmLanguage.json
 
 # Preserve local migration preview evidence outside tracked project content.
 migration-plan.json

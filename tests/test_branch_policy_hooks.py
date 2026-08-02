@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-INSTALLER = ROOT / "scripts" / "install-branch-policy-hooks.sh"
+INSTALLER = ROOT / "scripts" / "policy" / "install-hooks.sh"
 ZERO_OID = "0" * 40
 REQUIRED_EMAIL = "168346341+chrisdpurcell@users.noreply.github.com"
 

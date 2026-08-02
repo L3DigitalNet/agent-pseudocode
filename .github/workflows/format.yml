@@ -17,7 +17,8 @@ jobs:
       globs: "**/*.md\n**/*.json\n**/*.jsonc\n**/*.yml\n**/*.yaml"
       exclusions: |-
         docs/reference/pre-migration/**
+        editors/vscode/**/*.code-snippets
+        editors/vscode/**/*.js
+        editors/vscode/**/*.mjs
+        editors/vscode/syntaxes/*.tmLanguage.json
         package-lock.json
-        products/vscode-extension/**/*.code-snippets
-        products/vscode-extension/**/*.js
-        products/vscode-extension/**/*.mjs

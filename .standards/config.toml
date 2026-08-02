@@ -20,7 +20,7 @@ config = { contract_version = "1.0", workflow_ownership = "consumer-owned" }
 [standards.markdown-frontmatter]
 enabled = true
 version = "latest"
-config = { contract_version = "1.1", exclude = ["**/*.template.md", "AGENTS.md", "CLAUDE.md", ".agents/**", ".claude/**", ".codex/**", ".github/**", "docs/STATUS.md", "docs/TODO.md", "docs/handoff/**", "node_modules/**", "docs/scratchpad.md", "docs/reviews/**", "docs/plans/**", "docs/specs/**", "docs/superpowers/plans/**", "tests/fixtures/**", "README.md", "CHANGELOG.md", "LICENSE.md"], include = ["docs/**/*.md", "docs/research/*.md", "products/**/*.md", "hooks/**/*.md"], required = true, schema = "markdown-frontmatter" }
+config = { contract_version = "1.1", exclude = ["**/*.template.md", "AGENTS.md", "CLAUDE.md", ".agents/**", ".claude/**", ".codex/**", ".github/**", "docs/STATUS.md", "docs/TODO.md", "docs/handoff/**", "node_modules/**", "docs/scratchpad.md", "docs/reviews/**", "docs/plans/**", "docs/specs/**", "docs/superpowers/plans/**", "tests/fixtures/**", "README.md", "CHANGELOG.md", "LICENSE.md"], include = ["docs/**/*.md", "docs/research/*.md", "editors/**/*.md", "integrations/agents/**/*.md"], required = true, schema = "markdown-frontmatter" }
 
 [standards.markdown-tooling]
 enabled = true
@@ -31,9 +31,10 @@ config.ci = { lint_caller = true, format_caller = true }
 config.exclusions = [
   { glob = "docs/reference/pre-migration/**", applies_to = "both", reason = "Verbatim archived ChatGPT transcript; reformatting or annotating it would destroy the historical record. Already exempt from APSEUDO fence linting per bug 003." },
   { glob = "package-lock.json", applies_to = "format", reason = "npm regenerates this file and reverts Prettier's formatting on every install." },
-  { glob = "products/vscode-extension/**/*.js", applies_to = "format", reason = "VS Code extension JavaScript follows its product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope." },
-  { glob = "products/vscode-extension/**/*.mjs", applies_to = "format", reason = "VS Code extension build scripts follow their product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope." },
-  { glob = "products/vscode-extension/**/*.code-snippets", applies_to = "format", reason = "VS Code snippet files preserve their product-local JSON formatting and are outside the declared structured-config extensions." },
+  { glob = "editors/vscode/**/*.js", applies_to = "format", reason = "VS Code extension JavaScript follows its product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope." },
+  { glob = "editors/vscode/**/*.mjs", applies_to = "format", reason = "VS Code extension build scripts follow their product-local formatting; root Prettier would rewrite unrelated source outside the declared Markdown and structured-config scope." },
+  { glob = "editors/vscode/**/*.code-snippets", applies_to = "format", reason = "VS Code snippet files preserve their product-local JSON formatting and are outside the declared structured-config extensions." },
+  { glob = "editors/vscode/syntaxes/*.tmLanguage.json", applies_to = "format", reason = "VS Code grammar JSON is generated from YAML by the product-local compiler; root Prettier would create drift after every rebuild." },
 ]
 
 [standards.project-spec]

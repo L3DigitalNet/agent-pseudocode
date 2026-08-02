@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_REVIEW_PATHS = {
     "Language convention": "docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md",
     "Token specification": "docs/reference/language/TOKEN-SPEC.md",
-    "VS Code extension": "products/vscode-extension/package.json",
-    "Kate syntax": "products/kate-integration/agent-pseudocode.xml",
+    "VS Code extension": "editors/vscode/package.json",
+    "Kate syntax": "editors/kate/agent-pseudocode.xml",
     "Formatter": "src/apseudo_lint/formatting.py",
     "Validator": "src/apseudo_lint/lint.py",
     "Language server": "src/apseudo_lint/lsp.py",
@@ -148,7 +148,7 @@ def test_hook_blocks_no_verify_command() -> None:
     result = subprocess.run(
         [
             sys.executable,
-            str(ROOT / "integrations/agent-hooks" / "apseudo-hook.py"),
+            str(ROOT / "integrations" / "agents" / "apseudo-hook.py"),
             "--host",
             "codex",
             "--event",
