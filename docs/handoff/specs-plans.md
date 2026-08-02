@@ -1,12 +1,13 @@
 # Specs & Plans
 
-**Last updated:** 2026-08-01
+**Last updated:** 2026-08-02
 
-This repo does not use `docs/superpowers/specs/` — plans live under `docs/superpowers/plans/`; reference specs live under `docs/reference/` (relocated from `docs/specs/` — see Task 6 of the 2026-07-08 plan below). Forward-looking project/feature specs adopted under the `project-spec` standard (Task 6) will live under `docs/specs/` going forward — a fresh, narrower use of that directory name than the pre-migration reference docs.
+Current format-3 implementation plans live under `docs/plans/`. The completed 2026-07-08 standards-adoption plan remains under `docs/superpowers/plans/` as a historical record. Reference specs live under `docs/reference/` (relocated from `docs/specs/` by that historical plan); forward-looking project and feature specs live under `docs/specs/`.
 
 | Doc | Kind | Status |
 | --- | --- | --- |
-| `docs/superpowers/plans/2026-07-08-adopt-standards.md` | Plan | In progress |
+| `docs/plans/2026-08-02-repository-structure-option-2-plan.md` | Format-3 plan | Active |
+| `docs/superpowers/plans/2026-07-08-adopt-standards.md` | Historical plan | Completed |
 | `docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md` | Reference (relocated) | Active |
 | `docs/reference/EXECUTABLE-PSEUDOCODE-SPEC.md` | Reference (relocated) | Active |
 | `docs/reference/RULES.md` | Reference (relocated, generated) | Active |

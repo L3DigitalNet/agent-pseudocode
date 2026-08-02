@@ -57,7 +57,7 @@ script_ownership = "managed"
 
 [standards.python-tooling.config.ruff]
 line_length = 100
-extend_exclude = [".claude", ".agents", ".codex", ".continue"]
+extend_exclude = [".claude", ".agents", ".codex", ".continue", "scripts/plan.py"]
 
 [standards.python-tooling.config.type_checker]
 name = "basedpyright"
