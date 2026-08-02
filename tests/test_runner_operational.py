@@ -147,3 +147,24 @@ def test_unified_cli_doctor_and_registry_docs(
     assert docs_result == 0
     assert (tmp_path / "docs" / "tasks.md").exists()
     assert doctor_result in {0, 1}
+
+
+def test_unified_cli_registry_docs_use_canonical_default(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    script = _script(tmp_path / "demo.apseudo")
+    registry_dir = tmp_path / ".apseudo"
+    registry_dir.mkdir()
+    (registry_dir / "scripts.toml").write_text(
+        f'[scripts.demo]\npath = "{script}"\ndescription = "Demo task."\n',
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(tmp_path)
+
+    result = apseudo_main(["docs", "generate"])
+    generated = tmp_path / "docs" / "how-to" / "agent-tasks.md"
+
+    assert result == 0
+    assert generated.exists()
+    assert not (tmp_path / "docs" / "usage").exists()
+    assert "## `demo`" in generated.read_text(encoding="utf-8")

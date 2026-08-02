@@ -38,7 +38,9 @@ The resulting repository keeps `src/apseudo_lint/`, `tests/`, root package metad
 | `repo:pyproject.toml` | current-state evidence | Defines the installable package, twelve CLI entry points, test roots, and Python gates | current at `762805c` | §§3–7, T3–T6 |
 | `repo:src/apseudo_lint/review.py::review_project` | current-state evidence | Defines path-sensitive project completeness checks | current at `762805c` | T3–T6 |
 | `repo:src/apseudo_lint/mcp.py::APseudoMCPServer._read_resource` | current-state evidence | Defines MCP URI-to-document path resolution | current at `762805c` | T3, T5, T6 |
+| `repo:src/apseudo_lint/main_cli.py::_docs` | current-state evidence | Defines the generated task-document default and explicit output behavior | current at `a7a48bf` | T7 |
 | `repo:tests/test_mcp_review_hooks.py::test_review_project_reports_expected_tooling` | current-state evidence | Defines existing MCP, review, and hook integration coverage | current at `762805c` | T3–T6 |
+| `repo:tests/test_runner_operational.py::test_unified_cli_doctor_and_registry_docs` | current-state evidence | Defines current explicit-output task-document generation coverage | current at `a7a48bf` | T7 |
 | `repo:docs/README.md#layout` | current-state evidence | Defines the current documentation navigation and layout summary | current at `762805c` | T5 |
 | `repo:docs/handoff/bugs/001-mcp-resource-map-stale-paths.md#cause` | current-state evidence | Records known stale MCP document paths | open, 2026-07-09 | T2, T3, T5 |
 | `repo:docs/handoff/bugs/002-review-completeness-stale-paths.md#cause` | current-state evidence | Records known stale project-review document paths | open, 2026-07-09 | T2, T3, T5 |
@@ -198,12 +200,12 @@ Dependency direction remains inward toward `src/apseudo_lint`; no editor, host a
 | REQ-005 | Agent hook and MCP assets live under `integrations/` while root discovery configs resolve to them | review decision | Must | T4 | T4, T6 | PV-T4-001, PV-T4-002, PV-T6-001 |
 | REQ-006 | Source-tree shims, installers, policy hooks, and smoke utilities occupy the Appendix A script roles while `scripts/plan.py` and `scripts/check.py` remain fixed | review decision | Must | T4 | T4, T6 | PV-T4-001, PV-T4-002, PV-T6-001 |
 | REQ-007 | Root `examples/` is the canonical source for Markdown, runner, and standalone examples; registries and docs resolve to it | review decision | Must | T4 | T4, T5, T6 | PV-T4-002, PV-T5-001, PV-T6-001 |
-| REQ-008 | User docs are flattened into the Appendix A purpose-based taxonomy; fixed project-lifecycle doc roots stay fixed | review decision | Must | T5 | T5, T6 | PV-T5-001, PV-T6-001 |
-| REQ-009 | No unclassified active old-prefix reference remains after migration | request | Must | T6 | T2, T4, T5, T6 | PV-T2-001, PV-T4-001, PV-T5-001, PV-T6-001 |
-| REQ-010 | Public CLI behavior, APSEUDO policy, LSP, MCP URIs, hook decisions, runner behavior, pre-commit, CI configuration, and editor features are preserved | repository evidence | Must | T6 | T3, T4, T5, T6 | PV-T3-001, PV-T4-002, PV-T5-001, PV-T6-001 |
+| REQ-008 | User docs are flattened into the Appendix A purpose-based taxonomy; fixed project-lifecycle doc roots stay fixed | review decision | Must | T5 | T5, T6, T7 | PV-T5-001, PV-T6-001, PV-T7-001 |
+| REQ-009 | No unclassified active old-prefix reference remains after migration | request | Must | T6 | T2, T4, T5, T6, T7 | PV-T2-001, PV-T4-001, PV-T5-001, PV-T6-001, PV-T7-001 |
+| REQ-010 | Public CLI behavior, APSEUDO policy, LSP, MCP URIs, hook decisions, runner behavior, pre-commit, CI configuration, and editor features are preserved | repository evidence | Must | T6 | T3, T4, T5, T6, T7 | PV-T3-001, PV-T4-002, PV-T5-001, PV-T6-001, PV-T7-001 |
 | REQ-011 | Generated grammars and the tracked VSIX are rebuilt or independently verified at their new editor path | review decision | Should | T4 | T4, T6 | PV-T4-002, PV-T6-001 |
 | REQ-012 | Standards-managed changes are made through configuration and reconciliation without unmanaged digest drift | repository standards contract | Must | T5 | T4, T5, T6 | PV-T4-002, PV-T5-002, PV-T6-001 |
-| REQ-013 | Bugs 001 and 002 are regression-tested and closed against final paths; bug 005's whole-repository path-consumer lesson is applied | bug records | Must | T5 | T3, T5, T6 | PV-T3-001, PV-T5-001, PV-T6-001 |
+| REQ-013 | Bugs 001 and 002 are regression-tested and closed against final paths; bug 005's whole-repository path-consumer lesson is applied | bug records | Must | T5 | T3, T5, T6, T7 | PV-T3-001, PV-T5-001, PV-T6-001, PV-T7-001 |
 | REQ-014 | Final reporting separates changed-surface success from the inherited coverage/check.yml failure and proves coverage did not regress | repository state | Must | T6 | T3, T6 | PV-T3-002, PV-T6-001 |
 | REQ-015 | Git moves preserve tracked contents and executable modes, and no tracked artifact is silently dropped | request | Must | T6 | T2, T4, T6 | PV-T2-001, PV-T4-001, PV-T6-001 |
 
@@ -252,6 +254,7 @@ A verification task never implements fixes. It blocks, records evidence, appends
 | T4 | Apply the atomic non-document layout transition | active | transition | P2 | T3 | REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-009, REQ-010, REQ-011, REQ-012, REQ-015 | PV-T4-001 | no / broad path writes |
 | T5 | Apply the documentation taxonomy and owner reconciliation | active | documentation | P2 | T3, T4 | REQ-007, REQ-008, REQ-009, REQ-010, REQ-012, REQ-013 | PV-T5-001 | no / owns shared docs and final path tables |
 | T6 | Verify the integrated repository and capture evidence | active | verification | P3 | T5 | REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014, REQ-015 | PV-T6-001 | no / verification-only |
+| T7 | Correct the generated task-document default | active | brownfield-behavior | P4 | T4 | REQ-008, REQ-009, REQ-010, REQ-013 | PV-T7-001 | no / T5 generated-doc contract |
 
 ## 9. Implementation Tasks
 
@@ -453,6 +456,45 @@ A verification task never implements fixes. It blocks, records evidence, appends
   - **T6.5 RERUN** — rerun the complete affected matrix after any correction or record why no rerun is required.
   - **T6.6 CAPTURE EVIDENCE** — commit sanitized EV-002 and the final checkpoint with required trailers.
 
+### Phase P4: Bounded correction work
+
+#### T7: Correct the generated task-document default
+
+- **disposition:** active
+- **outcome:** `apseudo docs generate` writes to DocumentationMap-v1's canonical task-document path by default while preserving explicit `--output` behavior.
+- **work_type:** brownfield-behavior
+- **checkpoint:** one green corrective behavior checkpoint with required `Plan-*` trailers
+- **boundary:** public
+- **depends_on:** [T4]
+- **dependency_reason:** consumes LayoutMap-v1 and the final example registry while unblocking T5's DocumentationMap-v1 acceptance
+- **requirements:** [REQ-008, REQ-009, REQ-010, REQ-013]
+- **proof:** [PV-T7-001]
+- **source_refs:** [repo:docs/reviews/repo-structure-review.md#recommended-path-mapping, repo:src/apseudo_lint/main_cli.py::_docs, repo:tests/test_runner_operational.py::test_unified_cli_doctor_and_registry_docs]
+- **consumes:** [LayoutMap-v1, DocumentationMap-v1, `.apseudo/scripts.toml` registry]
+- **produces:** [path-sensitive default-output regression]
+- **preserves:** [explicit `--output` behavior, generated document content, command name, exit statuses]
+- **invariants:** [default generation does not recreate an unowned `docs/usage/` subtree]
+- **executor_discretion:** [focused test decomposition only]
+- **files:** [`src/apseudo_lint/main_cli.py` (modify; owner T7), `tests/test_runner_operational.py` (modify; owner T7), `.project-pipeline/2026-08-02-repository-structure-option-2/execution/logs/T7/` (ephemeral; owner T7)]
+- **parallel_safe:** no
+- **conflicts_with:** []
+- **corrects:** [T5]
+- **discovered_from:** [T5]
+- **supersedes:** []
+- **superseded_by:** []
+- **evidence:** [ephemeral]
+- **recovery:** restore the T4 checkpoint versions of the two owned files; T5 remains blocked until this correction passes.
+- **acceptance:** PV-T7-001 proves default generation uses `docs/how-to/agent-tasks.md`, explicit output still works, content remains registry-derived, and focused/full regressions pass.
+- **sub-tasks:**
+  - **T7.0 CHARACTERIZE** — record the current default path and explicit-output behavior.
+  - **T7.1 Verify Baseline** — confirm the default contradicts DocumentationMap-v1 while explicit output remains correct.
+  - **T7.2 RED** — add a focused default-output test expecting the canonical final path.
+  - **T7.3 Verify RED** — run the focused test and confirm only the stale default-path assertion fails.
+  - **T7.4 GREEN** — repoint the default to `docs/how-to/agent-tasks.md` without changing explicit output.
+  - **T7.5 Verify GREEN** — run focused and nearest CLI/runner regressions.
+  - **T7.6 REFACTOR** — assess whether test consolidation is needed and record none if unnecessary.
+  - **T7.7 Verify Task** — run PV-T7-001 and commit with required trailers.
+
 ## 10. Integration, Migration, and Recovery
 
 ### 10.1 Integration Sequence and Gates
@@ -622,6 +664,7 @@ Potential historical literals are classified line-by-line in EV-001. Accepted AD
 | PV-T5-001 | REQ-007, REQ-008, REQ-009, REQ-010, REQ-013 | T5 | documentation/reference and integration | DocumentationMap-v1, canonical docs, MCP/review content tests | Verify source-to-target accounting, links, resources, review rows, bug status, and old-path allowlist | Every document is accounted for, active links/resources resolve, review rows pass, and bug/index truth is current | Add a current Markdown link to an old root; reference scan fails | local | ephemeral |
 | PV-T5-002 | REQ-012 | T5 | configuration/documentation validation | Project Standards lock/config and frontmatter schema | Reconcile, validate, run Markdown/frontmatter/handoff/drift gates, then prove no-op convergence | Managed outputs converge, metadata and documentation gates pass, and drift is absent | Rerun reconciliation after a managed-path drift canary; check must detect or repair it | local standards tooling | ephemeral |
 | PV-T6-001 | REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014, REQ-015 | T6 | integration verification | All task proofs, ADR, EV-001, T3 baseline, repository-native gates | Run §12 matrix and capture EV-002 without edits | All requirements pass, coverage does not regress, and inherited hosted status is reported separately | Injected stale path, missing example, missing review row, mode loss, or coverage regression prevents acceptance | local Python/Node/Git | EV-002 |
+| PV-T7-001 | REQ-008, REQ-009, REQ-010, REQ-013 | T7 | regression/integration | DocumentationMap-v1, registry fixture, current explicit-output test | Assert default and explicit-output destinations plus generated registry content; run focused/full regressions | Default output is `docs/how-to/agent-tasks.md`, explicit output is unchanged, and no stale docs owner is recreated | Restore the old `docs/usage/agent-tasks.md` default; focused regression fails | local Python | ephemeral |
 
 ## Appendix C. Durable Evidence
 

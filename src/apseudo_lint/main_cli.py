@@ -202,7 +202,7 @@ def _docs(args: list[str]) -> int:
         print("usage: apseudo docs generate [--output <path>]", file=sys.stderr)
         return 2
     parser = argparse.ArgumentParser(prog="apseudo docs generate")
-    parser.add_argument("--output", type=Path, default=Path("docs/usage/agent-tasks.md"))
+    parser.add_argument("--output", type=Path, default=Path("docs/how-to/agent-tasks.md"))
     ns = parser.parse_args(args[1:])
     registry = _load_registry()
     scripts = registry.get("scripts")
