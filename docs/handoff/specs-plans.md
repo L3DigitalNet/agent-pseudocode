@@ -6,7 +6,7 @@ Current format-3 implementation plans live under `docs/plans/`. The completed 20
 
 | Doc | Kind | Status |
 | --- | --- | --- |
-| `docs/plans/2026-08-02-repository-structure-option-2-plan.md` | Format-3 plan | Active |
+| `docs/plans/2026-08-02-repository-structure-option-2-plan.md` | Format-3 plan | Completed |
 | `docs/superpowers/plans/2026-07-08-adopt-standards.md` | Historical plan | Completed |
 | `docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md` | Reference (relocated) | Active |
 | `docs/reference/EXECUTABLE-PSEUDOCODE-SPEC.md` | Reference (relocated) | Active |

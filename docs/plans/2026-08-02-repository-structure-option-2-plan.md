@@ -3,7 +3,7 @@ plan_format: 3
 title: 'Repository Structure Option 2 Implementation Plan'
 slug: 'repository-structure-option-2'
 size: full
-status: active
+status: complete
 revision: 2
 revises_revision: 1
 revision_reason: 'record the validated byte-identical bridge integration and its managed Ruff exclusion'
@@ -565,15 +565,15 @@ None.
 
 ## 13. Close-out
 
-- **Completed:** pending.
-- **Implementation and acceptance checkpoints:** pending.
-- **Decisions / deviations harvested:** pending.
-- **Risks closed / accepted:** pending.
-- **Deferred/discovered work filed:** pending.
-- **ADR/documentation/handoff reconciliation:** pending.
-- **Durable evidence verified:** pending.
-- **Plan status/index:** set this master complete and update `docs/handoff/specs-plans.md` only after final acceptance.
-- **Scratch teardown:** remove execution and obsolete authoring state only after no irreplaceable evidence remains.
+- **Completed:** 2026-08-02; all seven tasks are terminal and the final Definition of Done passes against committed implementation.
+- **Implementation and acceptance checkpoints:** T1 `de6cd14`, T2 `bf317b2`, T3 `b846e44`, T4 `a7a48bf`, T7 `2478dc3`, T5 `73861df`, and T6 `bdb4203`.
+- **Decisions / deviations harvested:** T4 updated the component-built branch hook installer regression under existing REQ-011 authority. T5 discovered the generated task-document default mismatch; the user-approved scope override added T7, which corrected and pinned the default before T5 resumed. No acceptance target or approved layout was weakened.
+- **Risks closed / accepted:** active path, behavior, mode, generated-artifact, standards, and documentation risks are closed. Coverage remains the inherited 62% against 85%; hosted CI is not run for the unpushed commits. A fresh npm install was externally unavailable, while T4's green editor proof and byte-identical generated/package artifacts remain current.
+- **Deferred/discovered work filed:** no restructuring correction remains. Coverage, bug 004, NFR-004, and generated RULES ownership remain in their existing STATUS/TODO/spec/bug owners.
+- **ADR/documentation/handoff reconciliation:** ADR 0005, final navigation, architecture/conventions, bugs 001/002, status, tasks, plan index, and the August session record reflect the accepted final tree.
+- **Durable evidence verified:** EV-001 remains at `docs/reviews/repo-structure-impact-inventory.md`; EV-002 is `docs/reviews/repo-structure-verification.md` and records the final matrix.
+- **Plan status/index:** master status is `complete`; the handoff plan index records completion.
+- **Scratch teardown:** authorized only after this close-out commit is confirmed; durable ADR, plan, EV-001, EV-002, and checkpoint commits remain.
 
 ## Appendix A. Interface and State Contracts
 

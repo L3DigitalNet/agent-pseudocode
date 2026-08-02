@@ -10,8 +10,10 @@
 - `SPEC-QZXW` specifies the validation toolchain and is the traceability source for coverage and defect work.
 - `docs/usage.md` is the authored CLI reference for `apseudo` and its per-command entry points.
 - `dev` is the permanent integration branch; ADR-0004 and local safeguards require an approved fast-forward promotion before `main` advances.
+- ADR-0005's Option 2 structure is complete; EV-002 records final acceptance.
+- Editors, integrations, examples, automation, and user docs now use their dedicated final owners.
 - Markdown lint and Prettier gates are green; the archived pre-migration transcript is a declared, reasoned exclusion.
 - The `check.yml` gate remains red at 62% coverage against the 85% floor.
-- Three product bugs remain open in `docs/handoff/bugs/`; bugs 003, 005, and 006 are fixed.
+- Bug 004 is the only open product bug; bugs 001, 002, 003, 005, and 006 are fixed.
 - Agent Handoff 1.8 provides the shared repo-local runtime and canonical `docs/` state. Its launcher works with `uv-strict-python` shims, resolving upstream issue 80.
 - `cli-docs-check.yml` stays consumer-owned to keep its SHA-pinned action hardening.
