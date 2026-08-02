@@ -25,7 +25,7 @@ license: null
 
 Autocomplete is provided in two layers:
 
-1. Static VS Code snippets in `products/vscode-extension/snippets/`.
+1. Static VS Code snippets in `editors/vscode/snippets/`.
 2. Editor-neutral LSP completions from `apseudo-lsp`.
 
 Completion categories:

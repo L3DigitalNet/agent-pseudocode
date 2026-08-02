@@ -10,8 +10,8 @@
 | --- | --- | --- |
 | Language convention | OK | `docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md` present |
 | Token specification | OK | `docs/reference/language/TOKEN-SPEC.md` present |
-| VS Code extension | OK | `products/vscode-extension/package.json` present |
-| Kate syntax | OK | `products/kate-integration/agent-pseudocode.xml` present |
+| VS Code extension | OK | `editors/vscode/package.json` present |
+| Kate syntax | OK | `editors/kate/agent-pseudocode.xml` present |
 | Formatter | OK | `src/apseudo_lint/formatting.py` present |
 | Validator | OK | `src/apseudo_lint/lint.py` present |
 | Language server | OK | `src/apseudo_lint/lsp.py` present |
@@ -22,5 +22,5 @@
 | Codex skill | OK | `.agents/skills/agent-pseudocode/SKILL.md` present |
 | pre-commit | OK | `.pre-commit-config.yaml` present |
 | CI | OK | `.github/workflows/apseudo-lint.yml` present |
-| Agent wording | OK | `docs/apseudo-docs/usage/AGENT-INSTRUCTIONS-WORDING.md` present |
+| Agent wording | OK | `docs/how-to/AGENT-INSTRUCTIONS-WORDING.md` present |
 | Traceability review | OK | `docs/reviews/PROJECT-TRACEABILITY-REVIEW.md` present |

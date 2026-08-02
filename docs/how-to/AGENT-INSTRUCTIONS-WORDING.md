@@ -40,7 +40,7 @@ When creating or editing `.apseudo`, `.agentpseudo`, `.pseudocode`, or Markdown 
 - Use `process name(...):` for complete workflows.
 - Use explicit `if / elif / else`, bounded `while`, visibly finite `for`, and approved terminal outcomes.
 - Do not leave unbounded loops, implicit fallthrough branches, placeholder bodies, or ambiguous returns.
-- Run `scripts/apseudo-format --check --changed` and `scripts/apseudo-lint --changed` before declaring completion.
+- Run `scripts/bin/apseudo-format --check --changed` and `scripts/bin/apseudo-lint --changed` before declaring completion.
 - If validation fails, fix the pseudocode or report the exact APSEUDO-\* rule ID and blocker.
 - Do not bypass hooks, pre-commit, CI, or validation with `--no-verify`, `SKIP=...`, disabled hooks, or ignored checks.
 ```
@@ -58,8 +58,8 @@ Required behavior:
 
 1. Use the `agent-pseudocode` skill when available.
 2. Use the `agent_pseudocode` MCP server when available for validation, rule explanations, templates, and project review.
-3. Run `scripts/apseudo-template --list` before drafting a new workflow unless the user supplied a complete structure.
-4. Run `scripts/apseudo-format --check --changed` before `scripts/apseudo-lint --changed`.
+3. Run `scripts/bin/apseudo-template --list` before drafting a new workflow unless the user supplied a complete structure.
+4. Run `scripts/bin/apseudo-format --check --changed` before `scripts/bin/apseudo-lint --changed`.
 5. Do not finish while APSEUDO-\* errors remain.
 6. Do not bypass `pre-commit`, CI, hooks, or validation.
 7. If a rule appears inappropriate, surface the rule ID, rationale, and proposed standard change instead of suppressing it.
@@ -83,8 +83,8 @@ Hard requirements:
 - Follow `docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md`.
 - Treat `apseudo-lint` as the source of truth for structural compliance.
 - Treat `apseudo-format` as the source of truth for formatting.
-- Run `scripts/apseudo-format --check --changed` and `scripts/apseudo-lint --changed` before completion.
-- Use `scripts/apseudo-explain <RULE>` for any unclear diagnostic.
+- Run `scripts/bin/apseudo-format --check --changed` and `scripts/bin/apseudo-lint --changed` before completion.
+- Use `scripts/bin/apseudo-explain <RULE>` for any unclear diagnostic.
 - Do not claim completion if APSEUDO-\* errors remain.
 - Do not use `git commit --no-verify`, `SKIP=...`, disabled hooks, or other enforcement bypasses.
 ```
@@ -106,8 +106,8 @@ Use the Pythonic Agent Pseudocode convention. Write workflows as Python-shaped p
 - [ ] Every `if / elif` chain has an `else` fallback or `@exhaustive` rationale.
 - [ ] Every process terminates with an approved outcome.
 - [ ] Mutating actions are followed by verification where required.
-- [ ] `scripts/apseudo-format --check .` passes.
-- [ ] `scripts/apseudo-lint .` passes.
+- [ ] `scripts/bin/apseudo-format --check .` passes.
+- [ ] `scripts/bin/apseudo-lint .` passes.
 ```
 
 ## Directory-specific override

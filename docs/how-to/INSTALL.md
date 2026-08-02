@@ -49,7 +49,7 @@ uv run apseudo-review .
 ## Install pre-commit and local enforcement
 
 ```bash
-scripts/install-enforcement.sh
+scripts/install/install-enforcement.sh
 ```
 
 This installs pre-commit hooks and runs the enforcement smoke test.
@@ -57,22 +57,22 @@ This installs pre-commit hooks and runs the enforcement smoke test.
 ## Build/install VS Code extension
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm install
 npm run check
 npm run package
 code --install-extension agent-pseudocode-0.6.1.vsix --force
 ```
 
-The extension starts `apseudo-lsp`. If the server is not found, open the extension settings and point the server command at the repository `scripts/apseudo-lsp` path.
+The extension starts `apseudo-lsp`. If the server is not found, open the extension settings and point the server command at the repository `scripts/bin/apseudo-lsp` path.
 
 ## Install Kate syntax highlighting
 
 ```bash
-./scripts/install-kate-user.sh
+./scripts/install/install-kate-user.sh
 ```
 
-Then enable Kate's LSP Client plugin and paste `products/kate-integration/lsp-client-settings.json` into the User Server Settings area. Use `products/kate-integration/lsp-client-settings.markdown-opt-in.json` only if you want Markdown LSP diagnostics in addition to syntax highlighting.
+Then enable Kate's LSP Client plugin and paste `editors/kate/lsp-client-settings.json` into the User Server Settings area. Use `editors/kate/lsp-client-settings.markdown-opt-in.json` only if you want Markdown LSP diagnostics in addition to syntax highlighting.
 
 ## Enable Claude Code hooks and skill
 
@@ -130,12 +130,12 @@ uv run pytest
 uv run apseudo-format --check .
 uv run apseudo-lint .
 uv run apseudo-review .
-uv run ruff check src tests integrations/agent-hooks
+uv run ruff check src tests integrations/agents
 uv run pyright
 python3 -m json.tool .claude/settings.json
 python3 -m json.tool .codex/hooks.json
 python3 -m json.tool .mcp.json
-cd products/vscode-extension && npm install && npm run check && npm run package
+cd editors/vscode && npm install && npm run check && npm run package
 ```
 
 ## Distribution notes

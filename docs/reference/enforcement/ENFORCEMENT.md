@@ -46,9 +46,9 @@ The CLI validator and formatter are the source of truth. Other integrations call
 ## Local commands
 
 ```bash
-scripts/apseudo-format --check --changed
-scripts/apseudo-lint --changed
-scripts/apseudo-review .
+scripts/bin/apseudo-format --check --changed
+scripts/bin/apseudo-lint --changed
+scripts/bin/apseudo-review .
 ```
 
 ## pre-commit
@@ -79,11 +79,11 @@ Set **Validate pseudocode standard** as a required check in branch protection.
 
 ## Agent hooks
 
-See `docs/apseudo-docs/features/HOOKS.md` for Claude/Codex hook details.
+See `docs/reference/features/HOOKS.md` for Claude/Codex hook details.
 
 ## MCP
 
-See `docs/apseudo-docs/features/MCP.md` for agent-facing MCP tools.
+See `docs/reference/features/MCP.md` for agent-facing MCP tools.
 
 ## Failure handling
 

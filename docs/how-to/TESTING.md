@@ -29,7 +29,7 @@ license: null
 
 ## Static checks included
 
-From `products/vscode-extension/`:
+From `editors/vscode/`:
 
 ```bash
 npm run check
@@ -42,16 +42,16 @@ Check Kate XML well-formedness from the repo root:
 ```bash
 python - <<'PY_KATE_XML'
 import xml.etree.ElementTree as ET
-ET.parse('products/kate-integration/agent-pseudocode.xml')
+ET.parse('editors/kate/agent-pseudocode.xml')
 print('Kate XML is well-formed')
 PY_KATE_XML
 ```
 
 ## Manual VS Code test
 
-1. Open `products/vscode-extension/` in VS Code.
+1. Open `editors/vscode/` in VS Code.
 2. Press `F5`.
-3. Open `docs/apseudo-docs/examples/review-loop.apseudo`.
+3. Open `examples/standalone/review-loop.apseudo`.
 4. Confirm language mode is **Agent Pseudocode**.
 5. Run **Developer: Inspect Editor Tokens and Scopes**.
 
@@ -67,7 +67,7 @@ Representative expected scope fragments:
 
 ## Manual Kate test
 
-1. Install XML with `./scripts/install-kate-user.sh`.
+1. Install XML with `./scripts/install/install-kate-user.sh`.
 2. Restart Kate.
-3. Open `products/kate-integration/examples/review-loop.apseudo`.
+3. Open `editors/kate/examples/review-loop.apseudo`.
 4. Select **Tools → Highlighting → Scripts → Agent Pseudocode** if needed.

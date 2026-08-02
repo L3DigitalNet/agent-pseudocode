@@ -25,8 +25,10 @@ license: null
 
 # Agent Pseudocode MCP Server
 
-**Command:** `scripts/apseudo-mcp`  
-**Python entry point:** `apseudo-mcp`  
+**Command:** `scripts/bin/apseudo-mcp`
+
+**Python entry point:** `apseudo-mcp`
+
 **Transport:** stdio newline-delimited JSON-RPC
 
 ## Purpose
@@ -59,7 +61,7 @@ The repository includes `.mcp.json`:
 			"command": "bash",
 			"args": [
 				"-lc",
-				"cd \"${CLAUDE_PROJECT_DIR:-$(pwd)}\" && exec ./scripts/apseudo-mcp"
+				"cd \"${CLAUDE_PROJECT_DIR:-$(pwd)}\" && exec ./scripts/bin/apseudo-mcp"
 			]
 		}
 	}
@@ -75,7 +77,7 @@ The repository includes `.codex/config.toml`:
 ```toml
 [mcp_servers.agent_pseudocode]
 command = "bash"
-args = ["-lc", "cd \"$(git rev-parse --show-toplevel)\" && exec ./scripts/apseudo-mcp"]
+args = ["-lc", "cd \"$(git rev-parse --show-toplevel)\" && exec ./scripts/bin/apseudo-mcp"]
 startup_timeout_sec = 10
 tool_timeout_sec = 60
 default_tools_approval_mode = "approve"
@@ -91,5 +93,5 @@ The server writes only valid JSON-RPC messages to stdout and logs only to stderr
 ## Manual smoke test
 
 ```bash
-printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' | scripts/apseudo-mcp
+printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' | scripts/bin/apseudo-mcp
 ```

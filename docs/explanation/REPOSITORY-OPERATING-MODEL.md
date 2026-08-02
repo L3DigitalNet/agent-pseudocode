@@ -59,7 +59,7 @@ repo/
         └── agent-pseudocode.md
 ```
 
-For this toolkit repository itself, the 0.6.1 layout keeps product/editor integrations under `products/`, shared hooks under `integrations/`, and docs grouped by purpose.
+For this toolkit repository itself, editor support lives under `editors/`, host adapters live under `integrations/`, canonical examples live under `examples/`, and docs are grouped by purpose.
 
 ## What belongs at root
 
@@ -191,7 +191,7 @@ Agents should follow this order:
 6. Do not bypass hooks, pre-commit, CI, or runner validation.
 7. If validation fails and cannot be fixed, return `Blocked` with evidence.
 
-Put this wording in `AGENTS.md` and `CLAUDE.md`; see [`../AGENT-INSTRUCTIONS-WORDING.md`](../AGENT-INSTRUCTIONS-WORDING.md).
+Put this wording in `AGENTS.md` and `CLAUDE.md`; see [`docs/how-to/AGENT-INSTRUCTIONS-WORDING.md`](../how-to/AGENT-INSTRUCTIONS-WORDING.md).
 
 ## When to make a runner script
 
@@ -228,7 +228,7 @@ A mature repo can define these registered tasks:
 Generate a docs page from the registry:
 
 ```bash
-uv run apseudo docs generate --output docs/apseudo-docs/usage/agent-tasks.md
+uv run apseudo docs generate --output docs/how-to/agent-tasks.md
 ```
 
 ## Recommended branch protection

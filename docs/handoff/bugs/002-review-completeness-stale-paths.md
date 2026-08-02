@@ -3,7 +3,7 @@ bug_id: '002'
 date: '2026-07-09'
 title: 'apseudo-review completeness checks hard-code stale docs/usage and docs/roadmap paths'
 services: [review]
-status: open
+status: fixed
 ---
 
 ## Cause
@@ -28,10 +28,13 @@ This is one of two reasons `uv run apseudo-review .` currently exits 1 on `main`
 
 ## Fix
 
-Not yet applied.
+Fixed on 2026-08-02. The three completeness rows now resolve the final paths:
 
-1. Update the two `docs/usage/...` paths to their real `docs/apseudo-docs/usage/...` locations.
-2. Investigate whether `docs/roadmap/FUTURE-VERSIONS.md` should exist (check git history / the "Future versions" area's intended content) before deciding whether to create it or remove the check.
+- `docs/how-to/AGENT-INSTRUCTIONS-WORDING.md`
+- `docs/reference/cli/RUNNER-USAGE.md`
+- `docs/roadmap/FUTURE-VERSIONS.md`
+
+The review regression pins all 21 area-to-path mappings and requires every row to report `OK`.
 
 ## Lesson
 

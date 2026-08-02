@@ -26,17 +26,17 @@ Included layers:
 ## Quick start: Python tooling
 
 ```bash
-uv sync --extra dev
+uv sync
 uv run pytest
 uv run apseudo-format --check .
 uv run apseudo-lint .
-uv run pyright
+uv run basedpyright
 ```
 
 ## Quick start: VS Code
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm install
 npm run check
 npm run package
@@ -48,16 +48,16 @@ Open a `.apseudo` file or a Markdown file with an `apseudo` fenced block. Diagno
 ## Quick start: Kate
 
 ```bash
-./scripts/install-kate-user.sh
+./scripts/install/install-kate-user.sh
 ```
 
-Then enable Kate's LSP Client plugin and paste `products/kate-integration/lsp-client-settings.json` into the User Server Settings area. If `apseudo-lsp` is not on Kate's `PATH`, replace the command with the absolute path to `scripts/apseudo-lsp`.
+Then enable Kate's LSP Client plugin and paste `editors/kate/lsp-client-settings.json` into the User Server Settings area. If `apseudo-lsp` is not on Kate's `PATH`, replace the command with the absolute path to `scripts/bin/apseudo-lsp`.
 
 ## Quick start: enforcement
 
 ```bash
-uv sync --extra dev
-scripts/install-enforcement.sh
+uv sync
+scripts/install/install-enforcement.sh
 ```
 
 That installs pre-commit/pre-push hooks and runs the local validation suite.
@@ -83,24 +83,24 @@ apseudo-codex     Runner alias that selects Codex CLI.
 | Topic | Document |
 | --- | --- |
 | Documentation index | `docs/README.md` |
-| Repository layout | `docs/usage/REPOSITORY-LAYOUT.md` |
-| Products index | `products/README.md` |
+| Repository layout | `docs/explanation/REPOSITORY-LAYOUT.md` |
+| Editor integrations | `editors/README.md` |
 | Feature gap analysis | `docs/reviews/FEATURE-GAP-ANALYSIS.md` |
 | Traceability review | `docs/reviews/PROJECT-TRACEABILITY-REVIEW.md` |
-| Agent instruction wording | `docs/usage/AGENT-INSTRUCTIONS-WORDING.md` |
+| Agent instruction wording | `docs/how-to/AGENT-INSTRUCTIONS-WORDING.md` |
 | Rule catalog | `docs/reference/RULES.md` |
-| MCP server | `docs/features/MCP.md` |
-| Agent hooks | `docs/features/HOOKS.md` |
-| Agent skills | `docs/features/SKILLS.md` |
-| Formatter, LSP, autocomplete | `docs/features/FORMATTER-LSP-AUTOCOMPLETE.md` |
-| Formatter only | `docs/features/FORMATTER.md` |
-| Language server only | `docs/features/LANGUAGE-SERVER.md` |
-| Autocomplete only | `docs/features/AUTOCOMPLETE.md` |
-| Enforcement | `docs/enforcement/ENFORCEMENT-GUIDE.md` |
-| VS Code | `docs/usage/VSCODE.md` and `products/vscode-extension/README.md` |
-| Kate | `docs/usage/KATE.md` and `products/kate-integration/README.md` |
+| MCP server | `docs/reference/features/MCP.md` |
+| Agent hooks | `docs/reference/features/HOOKS.md` |
+| Agent skills | `docs/reference/features/SKILLS.md` |
+| Formatter, LSP, autocomplete | `docs/reference/features/FORMATTER-LSP-AUTOCOMPLETE.md` |
+| Formatter only | `docs/reference/features/FORMATTER.md` |
+| Language server only | `docs/reference/features/LANGUAGE-SERVER.md` |
+| Autocomplete only | `docs/reference/features/AUTOCOMPLETE.md` |
+| Enforcement | `docs/how-to/enforcement/ENFORCEMENT-GUIDE.md` |
+| VS Code | `docs/how-to/editors/VSCODE.md` and `editors/vscode/README.md` |
+| Kate | `docs/how-to/editors/KATE.md` and `editors/kate/README.md` |
 | Executable runner spec | `docs/reference/EXECUTABLE-PSEUDOCODE-SPEC.md` |
-| Runner usage | `docs/usage/RUNNER-USAGE.md` |
+| Runner usage | `docs/reference/cli/RUNNER-USAGE.md` |
 | Future runner versions | `docs/roadmap/FUTURE-VERSIONS.md` |
 | Sources | `docs/reference/SOURCES.md` |
 

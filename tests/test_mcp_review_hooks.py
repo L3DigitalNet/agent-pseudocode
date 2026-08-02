@@ -30,11 +30,11 @@ EXPECTED_REVIEW_PATHS = {
     "Codex skill": ".agents/skills/agent-pseudocode/SKILL.md",
     "pre-commit": ".pre-commit-config.yaml",
     "CI": ".github/workflows/apseudo-lint.yml",
-    "Agent wording": "docs/apseudo-docs/usage/AGENT-INSTRUCTIONS-WORDING.md",
+    "Agent wording": "docs/how-to/AGENT-INSTRUCTIONS-WORDING.md",
     "Traceability review": "docs/reviews/PROJECT-TRACEABILITY-REVIEW.md",
     "Executable runner spec": "docs/reference/EXECUTABLE-PSEUDOCODE-SPEC.md",
-    "Runner usage": "docs/apseudo-docs/usage/RUNNER-USAGE.md",
-    "Future versions": "docs/apseudo-docs/roadmap/FUTURE-VERSIONS.md",
+    "Runner usage": "docs/reference/cli/RUNNER-USAGE.md",
+    "Future versions": "docs/roadmap/FUTURE-VERSIONS.md",
 }
 
 

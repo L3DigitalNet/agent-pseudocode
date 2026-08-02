@@ -27,7 +27,7 @@ license: null
 
 # Claude Code and Codex Hook Enforcement
 
-**Shared hook script:** `integrations/agent-hooks/apseudo-hook.py`
+**Shared hook script:** `integrations/agents/apseudo-hook.py`
 
 ## Events covered
 
@@ -49,7 +49,7 @@ The hook blocks commands that attempt to bypass or modify enforcement without an
 - `SKIP=...`
 - `pre-commit uninstall`
 - edits to `.apseudo-lint.toml`
-- edits to `integrations/agent-hooks/apseudo-hook.py`
+- edits to `integrations/agents/apseudo-hook.py`
 - edits to `.claude/settings.json`
 - edits to `.codex/hooks.json`
 
@@ -69,7 +69,7 @@ This path is ignored by Git. It is useful when debugging why an agent was blocke
 
 ```bash
 printf '%s' '{"cwd":"'"$PWD"'","tool_name":"Bash","tool_input":{"command":"git commit --no-verify"}}' \
-  | python3 integrations/agent-hooks/apseudo-hook.py --host codex --event pre-tool-use
+  | python3 integrations/agents/apseudo-hook.py --host codex --event pre-tool-use
 ```
 
 The command should exit with status `2` and explain the bypass.

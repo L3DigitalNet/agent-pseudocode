@@ -217,7 +217,7 @@ Registry entry:
 
 ```toml
 [scripts.fix-ruff]
-path = "docs/apseudo-docs/examples/runner/fix-ruff.apseudo"
+path = "examples/runner/fix-ruff.apseudo"
 description = "Fix Ruff failures in a bounded, verified loop."
 default_agent = "codex"
 default_mode = "apply"

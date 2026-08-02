@@ -210,6 +210,8 @@ Post-run assertions on the resulting working tree.
 ## ENVIRONMENT
 
 - `APSEUDO_AGENT` — default runner backend (`claude` or `codex`) when no `--claude`, `--codex`, or `--agent` is given.
+- `APSEUDO_RUN_ID` — run identifier exported to provider subprocesses when `--run-dir` is active.
+- `APSEUDO_RUN_DIR` — run-record directory exported to provider subprocesses when `--run-dir` is active.
 - `NO_COLOR` — disable ANSI color output.
 
 ## FILES
@@ -268,7 +270,7 @@ apseudo-run --codex --review --run-dir .apseudo/runs review-loop.apseudo -- targ
 ### Render a diagram without ANSI color
 
 ```bash
-NO_COLOR=1 apseudo mermaid docs/reference/language/examples/review-loop.apseudo --no-fence > flow.mmd
+NO_COLOR=1 apseudo mermaid examples/standalone/review-loop.apseudo --no-fence > flow.mmd
 ```
 
 ## NOTES

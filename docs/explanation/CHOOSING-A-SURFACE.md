@@ -121,14 +121,14 @@ This keeps the workflow diff-friendly and makes it easier for hooks/CI to valida
 Use executable scripts when you want shell-like ergonomics:
 
 ```bash
-uv run apseudo-run --codex --apply docs/apseudo-docs/examples/runner/fix-ruff.apseudo -- target=src
+uv run apseudo-run --codex --apply examples/runner/fix-ruff.apseudo -- target=src
 ```
 
 or:
 
 ```bash
-chmod +x docs/apseudo-docs/examples/runner/fix-ruff.apseudo
-docs/apseudo-docs/examples/runner/fix-ruff.apseudo --codex --apply -- target=src
+chmod +x examples/runner/fix-ruff.apseudo
+examples/runner/fix-ruff.apseudo --codex --apply -- target=src
 ```
 
 Use this for bounded, repeatable, agentic tasks:
@@ -155,13 +155,13 @@ Example:
 
 ```toml
 [scripts.fix-ruff]
-path = "docs/apseudo-docs/examples/runner/fix-ruff.apseudo"
+path = "examples/runner/fix-ruff.apseudo"
 description = "Fix Ruff failures in a bounded, verified loop."
 default_agent = "codex"
 default_mode = "apply"
 
 [scripts.review-spec]
-path = "docs/apseudo-docs/examples/runner/review-spec.apseudo"
+path = "examples/runner/review-spec.apseudo"
 description = "Review a specification document with bounded agent behavior."
 default_agent = "claude"
 default_mode = "review"

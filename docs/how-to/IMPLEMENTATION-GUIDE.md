@@ -59,13 +59,13 @@ git commit -m "Initial agent pseudocode toolkit"
 
 ```bash
 uv sync --extra dev
-scripts/run-enforcement-smoke-test.sh
+scripts/verify/enforcement-smoke-test.sh
 ```
 
 ### 3. Test VS Code in extension-development mode
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm install
 npm run check
 code .
@@ -74,8 +74,8 @@ code .
 Press `F5`. In the Extension Development Host, open:
 
 ```text
-docs/apseudo-docs/examples/review-loop.apseudo
-docs/apseudo-docs/examples/markdown-fence-demo.md
+examples/standalone/review-loop.apseudo
+examples/markdown/markdown-fence-demo.md
 ```
 
 Check:
@@ -89,7 +89,7 @@ Check:
 ### 4. Package VS Code
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm run package
 code --install-extension agent-pseudocode-0.6.1.vsix --force
 ```
@@ -99,16 +99,16 @@ For VS Codium, replace `code` with `codium`.
 ### 5. Install Kate highlighter and LSP config
 
 ```bash
-./scripts/install-kate-user.sh
+./scripts/install/install-kate-user.sh
 ```
 
-Restart Kate. Open `products/kate-integration/examples/review-loop.apseudo`. If auto-detection does not pick it up, choose:
+Restart Kate. Open `editors/kate/examples/review-loop.apseudo`. If auto-detection does not pick it up, choose:
 
 ```text
 Tools → Highlighting → Scripts → Agent Pseudocode
 ```
 
-Enable the LSP Client plugin and paste `products/kate-integration/lsp-client-settings.json` into User Server Settings. Use an absolute path to `scripts/apseudo-lsp` if Kate cannot find `apseudo-lsp`.
+Enable the LSP Client plugin and paste `editors/kate/lsp-client-settings.json` into User Server Settings. Use an absolute path to `scripts/bin/apseudo-lsp` if Kate cannot find `apseudo-lsp`.
 
 ## What still needs human review
 
@@ -122,7 +122,7 @@ Kate LSP configuration depends on the local Kate version and environment `PATH`.
 
 ### Markdown LSP behavior in Kate
 
-Markdown LSP mapping is opt-in. Use `products/kate-integration/lsp-client-settings.markdown-opt-in.json` only when you want the pseudocode server attached to Markdown mode.
+Markdown LSP mapping is opt-in. Use `editors/kate/lsp-client-settings.markdown-opt-in.json` only when you want the pseudocode server attached to Markdown mode.
 
 ## What not to overbuild yet
 

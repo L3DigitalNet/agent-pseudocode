@@ -112,7 +112,7 @@ def review_project(root: Path, config: LintConfig | None = None) -> ProjectRevie
         _check_file(
             actual_root,
             "Agent wording",
-            "docs/apseudo-docs/usage/AGENT-INSTRUCTIONS-WORDING.md",
+            "docs/how-to/AGENT-INSTRUCTIONS-WORDING.md",
         ),
         _check_file(
             actual_root, "Traceability review", "docs/reviews/PROJECT-TRACEABILITY-REVIEW.md"
@@ -120,8 +120,8 @@ def review_project(root: Path, config: LintConfig | None = None) -> ProjectRevie
         _check_file(
             actual_root, "Executable runner spec", "docs/reference/EXECUTABLE-PSEUDOCODE-SPEC.md"
         ),
-        _check_file(actual_root, "Runner usage", "docs/apseudo-docs/usage/RUNNER-USAGE.md"),
-        _check_file(actual_root, "Future versions", "docs/apseudo-docs/roadmap/FUTURE-VERSIONS.md"),
+        _check_file(actual_root, "Runner usage", "docs/reference/cli/RUNNER-USAGE.md"),
+        _check_file(actual_root, "Future versions", "docs/roadmap/FUTURE-VERSIONS.md"),
     ]
     return ProjectReview(actual_root, len(paths), diagnostics, checks)
 

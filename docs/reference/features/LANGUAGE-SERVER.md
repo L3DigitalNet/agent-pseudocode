@@ -25,8 +25,10 @@ license: null
 
 # Language Server
 
-**Command:** `scripts/apseudo-lsp`  
-**Python entry point:** `apseudo-lsp`  
+**Command:** `scripts/bin/apseudo-lsp`
+
+**Python entry point:** `apseudo-lsp`
+
 **Transport:** stdio LSP with `Content-Length` framing
 
 ## Capabilities
@@ -73,8 +75,8 @@ process demo() -> Outcome:
 
 ## VS Code
 
-The VS Code extension starts the server from `products/vscode-extension/extension.js` using `vscode-languageclient`. It applies to standalone pseudocode files and Markdown documents.
+The VS Code extension starts the server from `editors/vscode/extension.js` using `vscode-languageclient`. It applies to standalone pseudocode files and Markdown documents.
 
 ## Kate
 
-Kate can use the same server through the LSP Client plugin. Use `products/kate-integration/lsp-client-settings.json` and replace the command with an absolute path if Kate cannot find `apseudo-lsp`.
+Kate can use the same server through the LSP Client plugin. Use `editors/kate/lsp-client-settings.json` and replace the command with an absolute path if Kate cannot find `apseudo-lsp`.

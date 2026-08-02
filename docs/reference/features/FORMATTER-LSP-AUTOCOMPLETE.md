@@ -59,9 +59,9 @@ apseudo-lsp       Serve diagnostics, completion, hover, and formatting over stdi
 Wrapper scripts are also included:
 
 ```text
-scripts/apseudo-lint
-scripts/apseudo-format
-scripts/apseudo-lsp
+scripts/bin/apseudo-lint
+scripts/bin/apseudo-format
+scripts/bin/apseudo-lsp
 ```
 
 The wrappers are useful for repo-local hooks and editor configuration because they run through `uv` from the repository root.
@@ -116,7 +116,7 @@ uv run apseudo-format --diff --check .
 ### Format stdin
 
 ```bash
-cat docs/apseudo-docs/examples/review-loop.apseudo | uv run apseudo-format --stdin-filename review-loop.apseudo
+cat examples/standalone/review-loop.apseudo | uv run apseudo-format --stdin-filename review-loop.apseudo
 ```
 
 ## 3. Markdown formatting
@@ -191,17 +191,17 @@ The VS Code extension now includes:
 ### Development install
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm install
 npm run check
 ```
 
-Open the `products/vscode-extension/` folder in VS Code and press `F5` to launch an Extension Development Host.
+Open the `editors/vscode/` folder in VS Code and press `F5` to launch an Extension Development Host.
 
 ### Package and install
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm run package
 code --install-extension agent-pseudocode-0.6.1.vsix --force
 ```
@@ -217,7 +217,7 @@ codium --install-extension agent-pseudocode-0.6.1.vsix --force
 By default, the extension tries these options:
 
 1. A configured command from `agentPseudocode.server.command`.
-2. A repo-local `scripts/apseudo-lsp` wrapper.
+2. A repo-local `scripts/bin/apseudo-lsp` wrapper.
 3. `uv run apseudo-lsp` in a workspace containing `pyproject.toml`.
 4. `apseudo-lsp` on `PATH`.
 
@@ -264,7 +264,7 @@ Kate has two separate layers:
 ### Install syntax highlighting
 
 ```bash
-./scripts/install-kate-user.sh
+./scripts/install/install-kate-user.sh
 ```
 
 Restart Kate and open an `.apseudo` file. If needed, select:
@@ -292,7 +292,7 @@ Settings → Configure Kate → LSP Client → User Server Settings
 Paste the contents of:
 
 ```text
-products/kate-integration/lsp-client-settings.json
+editors/kate/lsp-client-settings.json
 ```
 
 Default standalone `.apseudo` configuration:
@@ -318,7 +318,7 @@ Default standalone `.apseudo` configuration:
 For source-tree development, replace the command with the absolute path to the wrapper script, for example:
 
 ```json
-"command": ["/home/chris/path/to/agent-pseudocode-syntax/scripts/apseudo-lsp"]
+"command": ["/home/chris/path/to/agent-pseudocode-syntax/scripts/bin/apseudo-lsp"]
 ```
 
 ### Kate Markdown caveat
@@ -326,7 +326,7 @@ For source-tree development, replace the command with the absolute path to the w
 Kate can start an LSP server by highlighting mode. The default config targets only the `Agent Pseudocode` highlighting mode for standalone `.apseudo` files. If you want Kate to run the server on Markdown too, use:
 
 ```text
-products/kate-integration/lsp-client-settings.markdown-opt-in.json
+editors/kate/lsp-client-settings.markdown-opt-in.json
 ```
 
 That maps both `Agent Pseudocode` and `Markdown` modes to the server. This is intentionally opt-in because it attaches the pseudocode server to every Markdown file in projects where the LSP config is active.
@@ -352,7 +352,7 @@ Use the tools in this order:
 uv run apseudo-format .
 uv run apseudo-lint .
 uv run pytest
-uv run ruff check src tests integrations/agent-hooks
+uv run ruff check src tests integrations/agents
 uv run pyright
 ```
 

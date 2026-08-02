@@ -87,7 +87,7 @@ Use an executable runner script because the workflow needs edits and verificatio
 Existing example:
 
 ```text
-docs/apseudo-docs/examples/runner/fix-ruff.apseudo
+examples/runner/fix-ruff.apseudo
 ```
 
 Command:
@@ -95,7 +95,7 @@ Command:
 ```bash
 uv run apseudo run fix-ruff --codex --apply \
   --run-dir .apseudo/runs \
-  --post-check "uv run ruff check src tests integrations/agent-hooks" \
+  --post-check "uv run ruff check src tests integrations/agents" \
   --post-check "uv run pytest" \
   --expect-diff \
   -- target=src
@@ -301,7 +301,7 @@ Command:
 uv run apseudo-run --claude --review \
   --require-no-diff \
   --run-dir .apseudo/runs \
-  docs/apseudo-docs/examples/runner/review-spec.apseudo -- spec_path=docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md
+  examples/runner/review-spec.apseudo -- spec_path=docs/reference/PYTHONIC_PSEUDOCODE_STANDARD.md
 ```
 
 Why pseudocode helps:

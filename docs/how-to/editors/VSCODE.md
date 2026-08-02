@@ -42,7 +42,7 @@ license: null
 ## Build
 
 ```bash
-cd products/vscode-extension
+cd editors/vscode
 npm install
 npm run check
 npm run package
@@ -59,7 +59,7 @@ code --install-extension agent-pseudocode-0.6.1.vsix --force
 The extension tries, in order:
 
 1. Configured `agentPseudocode.server.command`.
-2. `<workspace>/scripts/apseudo-lsp`.
+2. `<workspace>/scripts/bin/apseudo-lsp`.
 3. `uv run apseudo-lsp` when the workspace has `pyproject.toml`.
 4. `apseudo-lsp` on `PATH`.
 

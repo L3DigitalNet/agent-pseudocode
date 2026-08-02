@@ -28,24 +28,24 @@ license: null
 
 ## Files
 
-- `products/kate-integration/agent-pseudocode.xml` — KSyntaxHighlighting XML definition.
-- `products/kate-integration/lsp-client-settings.json` — standalone `.apseudo` LSP configuration.
-- `products/kate-integration/lsp-client-settings.markdown-opt-in.json` — optional Markdown LSP configuration.
+- `editors/kate/agent-pseudocode.xml` — KSyntaxHighlighting XML definition.
+- `editors/kate/lsp-client-settings.json` — standalone `.apseudo` LSP configuration.
+- `editors/kate/lsp-client-settings.markdown-opt-in.json` — optional Markdown LSP configuration.
 
 ## Install highlighting
 
 ```bash
-./scripts/install-kate-user.sh
+./scripts/install/install-kate-user.sh
 ```
 
-This copies `products/kate-integration/agent-pseudocode.xml` to the user syntax-highlighting directory.
+This copies `editors/kate/agent-pseudocode.xml` to the user syntax-highlighting directory.
 
 ## Enable LSP
 
 1. Enable Kate's LSP Client plugin.
 2. Open LSP Client settings.
-3. Paste `products/kate-integration/lsp-client-settings.json` into User Server Settings.
-4. Replace `apseudo-lsp` with an absolute path to `scripts/apseudo-lsp` if Kate cannot find the command.
+3. Paste `editors/kate/lsp-client-settings.json` into User Server Settings.
+4. Replace `apseudo-lsp` with an absolute path to `scripts/bin/apseudo-lsp` if Kate cannot find the command.
 
 ## Supported LSP features
 

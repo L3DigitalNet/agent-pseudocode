@@ -39,18 +39,22 @@ The root keeps only files that are either conventional repository entry points o
 | `.apseudo/`, `.apseudo-lint.toml`, `.mcp.json` | Runner registry, validator config, and MCP discovery. |
 | `.pre-commit-config.yaml`, `.pre-commit-hooks.yaml` | pre-commit discovery and local hook publishing. |
 | `.editorconfig`, `.gitignore` | Editor and Git conventions. |
-| `src/`, `tests/`, `scripts/` | Python package, test suite, and source-tree command wrappers. |
-| `docs/`, `products/`, `integrations/` | Grouped documentation, editor products, and agent integration implementation. |
+| `src/`, `tests/` | Python package and test suite. |
+| `scripts/` | Fixed control scripts and categorized source-tree utilities. |
+| `docs/`, `editors/`, `examples/`, `integrations/` | Documentation, editor support, examples, and host adapters. |
 
 ## Grouped areas
 
 | Folder | Contents |
 | --- | --- |
-| `docs/` | All human-facing reference, usage, specification, review, roadmap, source, and example documents. |
-| `products/` | Editor/distribution products such as the VS Code extension and Kate integration. |
-| `integrations/agent-hooks/` | Shared Claude Code and Codex hook implementation. The root `.claude` and `.codex` configs point here. |
+| `docs/` | Purpose-based user documentation plus fixed ADR, handoff, plan, research, review, and specification owners. |
+| `editors/` | Thin VS Code and Kate integrations. |
+| `examples/` | Canonical Markdown, runner, and standalone pseudocode examples. |
+| `integrations/agents/` | Shared Claude Code and Codex hook implementation plus dormant host examples. |
+| `integrations/mcp/` | Source-tree MCP launcher and example registration. |
 | `src/apseudo_lint/` | Shared Python implementation used by CLI tools, LSP, MCP, runner, hooks, and tests. |
-| `scripts/` | Source-tree wrappers for console commands and install/smoke-test helpers. |
+| `scripts/bin/` | Source-tree wrappers for public console commands. |
+| `scripts/install/`, `scripts/policy/`, `scripts/verify/` | Installers, branch-policy hooks, and verification utilities. |
 | `tests/` | Unit tests and valid/invalid fixtures. |
 
 ## Path convention

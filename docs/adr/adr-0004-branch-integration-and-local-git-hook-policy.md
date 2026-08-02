@@ -19,14 +19,14 @@ aliases:
   - 'ADR 0004'
   - 'Branch integration policy'
 related:
-  - 'docs/apseudo-docs/enforcement/ENFORCEMENT-GUIDE.md'
+  - 'docs/how-to/enforcement/ENFORCEMENT-GUIDE.md'
   - 'docs/handoff/conventions.md'
-  - 'scripts/install-branch-policy-hooks.sh'
+  - 'scripts/policy/install-hooks.sh'
 supersedes: []
 superseded_by: null
 source:
-  - 'scripts/branch-policy-hooks/pre-commit'
-  - 'scripts/branch-policy-hooks/pre-push'
+  - 'scripts/policy/hooks/pre-commit'
+  - 'scripts/policy/hooks/pre-push'
   - 'tests/test_branch_policy_hooks.py'
 confidence: 'high'
 visibility: 'internal'
@@ -110,7 +110,7 @@ Conformance is confirmed by the isolated hook tests and the operational linked-w
 
 ## More Information
 
-Install, preserve, and verify the safeguards through [the enforcement guide](../apseudo-docs/enforcement/ENFORCEMENT-GUIDE.md#branch-integration-and-local-git-hook-safeguards). The standard promotion sequence is:
+Install, preserve, and verify the safeguards through [the enforcement guide](../how-to/enforcement/ENFORCEMENT-GUIDE.md#branch-integration-and-local-git-hook-safeguards). The standard promotion sequence is:
 
 ```bash
 git switch main

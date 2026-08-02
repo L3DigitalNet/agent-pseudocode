@@ -3,7 +3,7 @@ bug_id: '001'
 date: '2026-07-09'
 title: 'MCP resource map references docs/*.md paths that never existed'
 services: [mcp]
-status: open
+status: fixed
 ---
 
 ## Cause
@@ -33,7 +33,9 @@ Found during a 2026-07-09 standards-adoption session's final whole-branch review
 
 ## Fix
 
-Not yet applied. `_read_resource` currently degrades gracefully — a missing path returns a "not found" string rather than raising, so this is silent data loss (four resources always report as absent), not a crash. Fix by repointing each entry to its real path, matching the pattern used for `apseudo://rules`.
+Fixed on 2026-08-02. `_read_resource` now resolves all five public resource URIs to the final documentation tree, including `docs/how-to/AGENT-INSTRUCTIONS-WORDING.md`.
+
+Content-level regressions assert that every URI returns its expected document heading and never returns the graceful "not found" payload.
 
 ## Lesson
 

@@ -66,21 +66,21 @@ The design rule is simple: **all policy logic lives in `src/apseudo_lint`; integ
 | Path | Purpose |
 | --- | --- |
 | `src/apseudo_lint/` | Shared Python validator package. |
-| `scripts/apseudo-lint` | Install-free CLI wrapper using `PYTHONPATH=src`. |
+| `scripts/bin/apseudo-lint` | Install-free CLI wrapper using `PYTHONPATH=src`. |
 | `.apseudo-lint.toml` | Project rule configuration. |
 | `tests/` | Valid/invalid fixture tests for the validator. |
 | `.pre-commit-config.yaml` | Local pre-commit and pre-push integration. |
 | `.pre-commit-hooks.yaml` | Reusable hook manifest if this repository is consumed by another repo. |
 | `.github/workflows/apseudo-lint.yml` | GitHub Actions CI gate. |
-| `integrations/agent-hooks/apseudo-hook.py` | Host-neutral hook runner used by Claude Code and Codex. |
+| `integrations/agents/apseudo-hook.py` | Host-neutral hook runner used by Claude Code and Codex. |
 | `.claude/settings.json` | Claude Code project hooks. |
 | `.codex/hooks.json` | Codex project hooks. |
 | `AGENTS.md` | Codex/general agent instructions. |
 | `CLAUDE.md` | Claude-specific instructions. |
-| `scripts/install-enforcement.sh` | Local install helper. |
-| `scripts/run-enforcement-smoke-test.sh` | Local end-to-end smoke test. |
-| `scripts/install-branch-policy-hooks.sh` | Collision-safe installer for the local `main` branch safeguards. |
-| `scripts/branch-policy-hooks/` | Version-controlled sources for the installed `pre-commit` and `pre-push` safeguards. |
+| `scripts/install/install-enforcement.sh` | Local install helper. |
+| `scripts/verify/enforcement-smoke-test.sh` | Local end-to-end smoke test. |
+| `scripts/policy/install-hooks.sh` | Collision-safe installer for the local `main` branch safeguards. |
+| `scripts/policy/hooks/` | Version-controlled sources for the installed `pre-commit` and `pre-push` safeguards. |
 
 ## Local setup
 
@@ -90,17 +90,17 @@ From the repository root:
 uv sync --extra dev
 uv run pytest
 uv run apseudo-lint .
-uv run ruff check src tests integrations/agent-hooks
+uv run ruff check src tests integrations/agents
 uv run pyright
 ```
 
 The wrapper also works without package installation:
 
 ```bash
-scripts/apseudo-lint .
-scripts/apseudo-lint --changed
-scripts/apseudo-lint --format json docs/apseudo-docs/examples/review-loop.apseudo
-scripts/apseudo-lint --format github examples
+scripts/bin/apseudo-lint .
+scripts/bin/apseudo-lint --changed
+scripts/bin/apseudo-lint --format json examples/standalone/review-loop.apseudo
+scripts/bin/apseudo-lint --format github examples
 ```
 
 ## pre-commit and pre-push
@@ -134,7 +134,7 @@ The hook applies to:
 Install the branch safeguards from the repository root:
 
 ```bash
-scripts/install-branch-policy-hooks.sh
+scripts/policy/install-hooks.sh
 ```
 
 The installer writes only the common Git hook directory. It preserves an existing executable `pre-commit` or `pre-push` hook as `<hook>.branch-policy-original`, calls that predecessor first, and refuses an ambiguous hook-plus-backup state. It is idempotent for the managed hooks it recognizes. Linked worktrees share that common hook directory.
@@ -183,7 +183,7 @@ The job runs:
 uv sync --extra dev
 uv run pytest
 uv run apseudo-lint .
-uv run ruff check src tests integrations/agent-hooks
+uv run ruff check src tests integrations/agents
 uv run pyright
 ```
 
@@ -208,10 +208,10 @@ Configured events:
 The command hook invokes:
 
 ```bash
-python3 "${CLAUDE_PROJECT_DIR}/integrations/agent-hooks/apseudo-hook.py" --host claude --event <event>
+python3 "${CLAUDE_PROJECT_DIR}/integrations/agents/apseudo-hook.py" --host claude --event <event>
 ```
 
-The hook script reads JSON from stdin, resolves the repo root, runs `scripts/apseudo-lint --changed`, and exits `2` with diagnostic text on stderr when validation fails.
+The hook script reads JSON from stdin, resolves the repo root, runs `scripts/bin/apseudo-lint --changed`, and exits `2` with diagnostic text on stderr when validation fails.
 
 Operational notes:
 
@@ -238,7 +238,7 @@ Configured events:
 The command hook invokes:
 
 ```bash
-/usr/bin/python3 "$(git rev-parse --show-toplevel)/integrations/agent-hooks/apseudo-hook.py" --host codex --event <event>
+/usr/bin/python3 "$(git rev-parse --show-toplevel)/integrations/agents/apseudo-hook.py" --host codex --event <event>
 ```
 
 Operational notes:
@@ -246,7 +246,7 @@ Operational notes:
 1. Project-local hooks load only after the `.codex/` layer is trusted.
 2. Open Codex in the repository and run `/hooks`.
 3. Review and trust the exact hook definitions.
-4. Re-review hooks after editing `.codex/hooks.json` or `integrations/agent-hooks/apseudo-hook.py`.
+4. Re-review hooks after editing `.codex/hooks.json` or `integrations/agents/apseudo-hook.py`.
 
 ## Rule catalog
 
@@ -341,7 +341,7 @@ Use `--strict` or `fail_on_warning = true` when warnings should fail CI/hook exe
 ## Smoke test
 
 ```bash
-scripts/run-enforcement-smoke-test.sh
+scripts/verify/enforcement-smoke-test.sh
 ```
 
 This runs the unit tests, linter, Ruff, Pyright, and JSON validation for the Claude/Codex hook config files.

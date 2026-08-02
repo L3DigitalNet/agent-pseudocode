@@ -257,8 +257,7 @@ class APseudoMCPServer:
             "apseudo://rules": self.root / "docs" / "reference" / "RULES.md",
             "apseudo://agent-instructions": self.root
             / "docs"
-            / "apseudo-docs"
-            / "usage"
+            / "how-to"
             / "AGENT-INSTRUCTIONS-WORDING.md",
             "apseudo://feature-gap-analysis": self.root
             / "docs"

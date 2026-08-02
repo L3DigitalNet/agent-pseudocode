@@ -95,7 +95,7 @@ Scope for this release is the validation and formatting core plus its reuse cont
 
 The toolchain is implemented and shipped in `agent-pseudocode` version 0.6.1 as the `apseudo_lint` package. This specification is reverse-engineered from that implementation to give the existing behavior a testable contract, not to propose new work.
 
-The core modules are `lint.py` (validation), `formatting.py` (formatting), `rules.py` (catalog), `config.py` (discovery), `discover.py` (file selection), `model.py` (parsed representation), `extract.py` (Markdown fence extraction), and `output.py` (diagnostic rendering). Consumer surfaces are `cli.py`, `format_cli.py`, `review_cli.py`, `explain_cli.py`, `template_cli.py`, `mermaid_cli.py`, `main_cli.py`, `lsp.py`, and `mcp.py`, plus `integrations/agent-hooks`, `.pre-commit-hooks.yaml`, `products/vscode-extension`, and `products/kate-integration`.
+The core modules are `lint.py` (validation), `formatting.py` (formatting), `rules.py` (catalog), `config.py` (discovery), `discover.py` (file selection), `model.py` (parsed representation), `extract.py` (Markdown fence extraction), and `output.py` (diagnostic rendering). Consumer surfaces are `cli.py`, `format_cli.py`, `review_cli.py`, `explain_cli.py`, `template_cli.py`, `mermaid_cli.py`, `main_cli.py`, `lsp.py`, and `mcp.py`, plus `integrations/agents`, `.pre-commit-hooks.yaml`, `editors/vscode`, and `editors/kate`.
 
 The catalog holds 20 rules across 11 families — `ACTION`, `BRANCH`, `FOR`, `IO`, `NEST`, `NORM`, `OUTCOME`, `PARSE`, `PROC`, `RETURN`, `WHILE` — at two severities, `error` and `warning`.
 
