@@ -250,11 +250,24 @@ class APseudoMCPServer:
     def _read_resource(self, params: Json) -> Json:
         uri = _string_arg(params, "uri")
         resource_map = {
-            "apseudo://standard": self.root / "docs" / "PYTHONIC_PSEUDOCODE_STANDARD.md",
+            "apseudo://standard": self.root
+            / "docs"
+            / "reference"
+            / "PYTHONIC_PSEUDOCODE_STANDARD.md",
             "apseudo://rules": self.root / "docs" / "reference" / "RULES.md",
-            "apseudo://agent-instructions": self.root / "docs" / "AGENT-INSTRUCTIONS-WORDING.md",
-            "apseudo://feature-gap-analysis": self.root / "docs" / "FEATURE-GAP-ANALYSIS.md",
-            "apseudo://traceability-review": self.root / "docs" / "PROJECT-TRACEABILITY-REVIEW.md",
+            "apseudo://agent-instructions": self.root
+            / "docs"
+            / "apseudo-docs"
+            / "usage"
+            / "AGENT-INSTRUCTIONS-WORDING.md",
+            "apseudo://feature-gap-analysis": self.root
+            / "docs"
+            / "reviews"
+            / "FEATURE-GAP-ANALYSIS.md",
+            "apseudo://traceability-review": self.root
+            / "docs"
+            / "reviews"
+            / "PROJECT-TRACEABILITY-REVIEW.md",
         }
         path = resource_map.get(uri)
         if path is None:

@@ -104,20 +104,24 @@ def review_project(root: Path, config: LintConfig | None = None) -> ProjectRevie
         _check_file(actual_root, "Executable runner", "src/apseudo_lint/runner.py"),
         _check_file(actual_root, "Runner CLI", "src/apseudo_lint/runner_cli.py"),
         _check_file(actual_root, "Claude hooks", ".claude/settings.json"),
-        _check_file(actual_root, "Codex hooks", ".codex/hooks.json"),
+        _check_file(actual_root, "Codex hooks", ".codex/config.toml"),
         _check_file(actual_root, "Claude skill", ".claude/skills/agent-pseudocode/SKILL.md"),
         _check_file(actual_root, "Codex skill", ".agents/skills/agent-pseudocode/SKILL.md"),
         _check_file(actual_root, "pre-commit", ".pre-commit-config.yaml"),
         _check_file(actual_root, "CI", ".github/workflows/apseudo-lint.yml"),
-        _check_file(actual_root, "Agent wording", "docs/usage/AGENT-INSTRUCTIONS-WORDING.md"),
+        _check_file(
+            actual_root,
+            "Agent wording",
+            "docs/apseudo-docs/usage/AGENT-INSTRUCTIONS-WORDING.md",
+        ),
         _check_file(
             actual_root, "Traceability review", "docs/reviews/PROJECT-TRACEABILITY-REVIEW.md"
         ),
         _check_file(
             actual_root, "Executable runner spec", "docs/reference/EXECUTABLE-PSEUDOCODE-SPEC.md"
         ),
-        _check_file(actual_root, "Runner usage", "docs/usage/RUNNER-USAGE.md"),
-        _check_file(actual_root, "Future versions", "docs/roadmap/FUTURE-VERSIONS.md"),
+        _check_file(actual_root, "Runner usage", "docs/apseudo-docs/usage/RUNNER-USAGE.md"),
+        _check_file(actual_root, "Future versions", "docs/apseudo-docs/roadmap/FUTURE-VERSIONS.md"),
     ]
     return ProjectReview(actual_root, len(paths), diagnostics, checks)
 
