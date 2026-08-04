@@ -1,7 +1,7 @@
 # Scratch and semi-durable
-.scratch/
-.workflow/
-.project-pipeline/
+.scratch/*
+.workflow/*
+.project-pipeline/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
