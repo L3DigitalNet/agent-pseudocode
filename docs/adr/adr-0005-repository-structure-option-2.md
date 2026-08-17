@@ -6,7 +6,7 @@ description: 'Decision to organize editor, integration, example, script, and use
 doc_type: 'adr'
 status: 'active'
 created: '2026-08-02'
-updated: '2026-08-02'
+updated: '2026-08-17'
 reviewed: '2026-08-02'
 owner: 'agent-pseudocode-maintainers'
 consumer: 'mix'
@@ -85,7 +85,7 @@ The documentation taxonomy uses `tutorials/`, `how-to/`, `reference/`, and `expl
 The following exceptions are binding:
 
 - `.agents/`, `.apseudo/`, `.claude/`, `.codex/`, `.github/`, `.standards/`, root discovery configuration, `src/`, `tests/`, `pyproject.toml`, and `uv.lock` remain at their consumer- or tool-required locations.
-- `scripts/plan.py` and `scripts/check.py` remain fixed repository control entry points. The format-3 plan bridge remains byte-identical to its recorded upstream helper and retains its exact managed Ruff exclusion.
+- `scripts/check.py` remains a fixed repository control entry point. As decided on 2026-08-02 this exception also covered `scripts/plan.py`, the format-3 plan bridge, which was required to stay byte-identical to its recorded upstream helper and to retain its exact managed Ruff exclusion. That bridge was retired on 2026-08-17 when the plan engine was consolidated upstream (L3DigitalNet/agent-configs#44); the script and its Ruff exclusion are gone, and no layout exception applies to it any more.
 - The tracked VSIX remains part of this restructuring; changing artifact publication or tracking policy requires a separate decision.
 - Python distribution/import names, public CLI names, MCP URIs, APSEUDO rule identifiers, runner semantics, hook decisions, and editor behavior do not change as part of the layout transition.
 - Old directory trees are not retained as compatibility shims. Historical records may retain old path literals only when a line-level inventory classifies them as descriptions of past state.
