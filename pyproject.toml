@@ -53,7 +53,7 @@ apseudo-claude = "apseudo_lint.runner_cli:claude_main"
 apseudo-codex = "apseudo_lint.runner_cli:codex_main"
 
 [build-system]
-requires = ["uv_build>=0.11,<0.12"]
+requires = ["uv_build>=0.11,<1.0"]
 build-backend = "uv_build"
 
 # Project name normalizes to "agent_pseudocode_syntax_toolkit", which does not match
